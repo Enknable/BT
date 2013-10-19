@@ -1,4 +1,6 @@
 #include <inttypes.h>
+#include <stdio.h>
+#include <stdlib.h>
 //Protocol guaranteeing a sequence number, length, md5 checksum and 448 bits for data.
 
 struct port {
@@ -10,3 +12,8 @@ struct port {
     
 } __attribute__ ((__packed__)) ;
     
+//Open file, go to sqNum*"standard-offput", read into buffer, guarantee read = write, return pointer to the buffer.
+
+char *getChunk(int16_t sqNum, FILE * fp);
+
+
