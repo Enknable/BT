@@ -1,7 +1,7 @@
 #include <inttypes.h>
 //Protocol guaranteeing a sequence number, length, md5 checksum and 448 bits for data.
 
-struct prot {
+struct port {
     
     int16_t sqNum;
     int16_t length;
