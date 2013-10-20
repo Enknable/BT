@@ -70,6 +70,7 @@ for(;;){
                 addrlen = sizeof remoteaddr;
 
                 recv(i, buf, sizeof buf, 0);
+                printf("%s\n", buf);
             }
         }
     }
