@@ -11,6 +11,17 @@
 
 #define CHUNK_SIZE 1024
 
+// get sockaddr, IPv4 or IPv6:
+void *get_in_addr(struct sockaddr *sa)
+{
+    if (sa->sa_family == AF_INET) {
+        return &(((struct sockaddr_in*)sa)->sin_addr);
+    }
+
+    return &(((struct sockaddr_in6*)sa)->sin6_addr);
+}
+
+
 int main( int argc, char *argv[])
 {
 
@@ -21,6 +32,8 @@ fd_set read_fds;  // temp file descriptor list for select()
 char buf[256];    // buffer for client data
 struct sockaddr_storage remoteaddr; // client address
 socklen_t addrlen;
+int byte_count;
+char ipstr[INET6_ADDRSTRLEN];
 
 FD_ZERO(&master);    // clear the master and temp sets
 FD_ZERO(&read_fds);
@@ -42,6 +55,8 @@ if(SendR == -1)
 
 if(bind(SendR, res->ai_addr, res->ai_addrlen) == -1)
     fprintf(stderr,"Bind Error: %s\n", strerror(errno));
+
+
 
 //lose the pesky "Address already in use" error message
 if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
@@ -68,9 +83,13 @@ for(;;){
             if (i == SendR) {
                 // handle new connections
                 addrlen = sizeof remoteaddr;
+                byte_count = recvfrom(SendR, buf, sizeof buf, 0,(struct sockaddr *) &remoteaddr, &addrlen);
 
-                recv(i, buf, sizeof buf, 0);
-                printf("%s\n", buf);
+                printf("recv()'d %d bytes of data in buf\n", byte_count);
+                printf("from IP address %s\n",
+                    inet_ntop(remoteaddr.ss_family,
+                        get_in_addr((struct sockaddr*)&remoteaddr),
+                        ipstr, sizeof ipstr));
             }
         }
     }
