@@ -86,10 +86,10 @@ for(;;){
                 byte_count = recvfrom(SendR, buf, sizeof buf, 0,(struct sockaddr *) &remoteaddr, &addrlen);
 
                 printf("recv()'d %d bytes of data in buf\n", byte_count);
-                printf("from IP address %s\n",
                     inet_ntop(remoteaddr.ss_family,
                         get_in_addr((struct sockaddr*)&remoteaddr),
-                        ipstr, sizeof ipstr));
+                        ipstr, sizeof ipstr);
+                        printf("from IP address %s\n", ipstr);
             }
         }
     }
