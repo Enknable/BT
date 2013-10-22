@@ -8,12 +8,11 @@ struct port {
     int16_t sqNum;
     int16_t length;
     int8_t md5[16];
-    int64_t data[7];
+    char data[2048];
     
 } __attribute__ ((__packed__)) ;
     
-//Open file, go to sqNum*"standard-offput", read into buffer, guarantee read = write, return pointer to the buffer.
+//Open file, go to sqNum*"standard-offset", read into buffer, guarantee read = write, return pointer to the buffer.
 
-char *getChunk(int16_t sqNum, FILE * fp);
-
+char * getChunk(int16_t sqNum, FILE * fp, char data[2048]);
 

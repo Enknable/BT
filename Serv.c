@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#define CHUNK_SIZE 1024
 
 // get sockaddr, IPv4 or IPv6:
 void *get_in_addr(struct sockaddr *sa)
@@ -85,7 +84,9 @@ for(;;){
                 addrlen = sizeof remoteaddr;
                 byte_count = recvfrom(SendR, buf, sizeof buf, 0,(struct sockaddr *) &remoteaddr, &addrlen);
 
-                printf("recv()'d %d bytes of data in buf\n", byte_count);
+                printf("recv()'d %d bytes of data in buf\n", byte_count); 
+                //This is where the getchunk functions goes. recvfrom -> check struct (App header), if seq#=0 create new sd(socket/descriptor) and fire packets out else create
+                //a TCP connection and send missing chunk.
                     inet_ntop(remoteaddr.ss_family,
                         get_in_addr((struct sockaddr*)&remoteaddr),
                         ipstr, sizeof ipstr);
