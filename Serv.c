@@ -94,7 +94,7 @@ for(;;){
                         get_in_addr((struct sockaddr*)&remoteaddr),
                         ipstr, sizeof ipstr);
                         printf("from IP address %s\n", ipstr);
-                        printf("%u", bt.sqNum);
+                        printf("%" PRId16, bt.sqNum);
             }
         }
     }
