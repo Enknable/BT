@@ -8,6 +8,7 @@
 #include <netdb.h>
 #include <stdlib.h>
 #include <errno.h>
+#include "bt.h"
 
 
 // get sockaddr, IPv4 or IPv6:
@@ -24,6 +25,7 @@ void *get_in_addr(struct sockaddr *sa)
 int main( int argc, char *argv[])
 {
 
+struct port bt;
 int status, SendR,  yes=1, fdmax, newfd, i;
 struct addrinfo hints, *res;  // will point to the results
 fd_set master;    // master file descriptor list
@@ -82,7 +84,7 @@ for(;;){
             if (i == SendR) {
                 // handle new connections
                 addrlen = sizeof remoteaddr;
-                byte_count = recvfrom(SendR, buf, sizeof buf, 0,(struct sockaddr *) &remoteaddr, &addrlen);
+                byte_count = recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
 
                 printf("recv()'d %d bytes of data in buf\n", byte_count); 
                 //This is where the getchunk functions goes. recvfrom -> check struct (App header), if seq#=0 create new sd(socket/descriptor) and fire packets out else create
@@ -91,6 +93,7 @@ for(;;){
                         get_in_addr((struct sockaddr*)&remoteaddr),
                         ipstr, sizeof ipstr);
                         printf("from IP address %s\n", ipstr);
+                        printf("Containing Sequence # %i\n", bt.sqNum);
             }
         }
     }
