@@ -109,7 +109,7 @@ for(;;){
                     SDARRAY[count]=socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
                         if(SDARRAY[count] == -1){
                         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
-                        FD_ZERO(&read_fds);
+                
 }else{
     
     printf("%u\n", bt.sqNum);
@@ -129,19 +129,19 @@ for(;;){
                         
                         printf("%u\n", bt.sqNum);
             }
-        }else{
+        }
             write_fds = master;
             printf("%u\n", bt.sqNum);
     if(FD_ISSET(i, &write_fds)){
             byte_count = sendto(SDARRAY[count-1], "HI", sizeof bt, 0,(struct sockaddr *) remoteaddrudp[count-1], addrlenudp[count-1]);
             if(byte_count==-1)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
-        }
+        
         }
         
     }
 }
-freeaddrinfo(res); // free the linked-list
+//freeaddrinfo(res); // free the linked-list
 
 return 0;
 }
