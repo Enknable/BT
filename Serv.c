@@ -119,6 +119,8 @@ for(;;){
     FD_SET(SDARRAY[count], &master);
     if(FD_ISSET(i, &write_fds)){
             byte_count = sendto(SDARRAY[count], "HI", sizeof bt, 0,(struct sockaddr *) remoteaddrudp[count], addrlenudp[count]);
+            if(byte_count==-1)
+                fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
         }
     count++;
     
