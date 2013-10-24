@@ -117,7 +117,7 @@ for(;;){
     remoteaddrudp[count] = (struct sockaddr *) &remoteaddr;
     addrlenudp[count] = sizeof remoteaddr;
     FD_SET(SDARRAY[count], &write_fds);
-    printf("%i\n", remoteaddrudp[count]);
+    //printf("%i\n", remoteaddrudp[count]);
     count++;
     
 }
