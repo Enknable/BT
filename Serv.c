@@ -117,7 +117,7 @@ for(;;){
     remoteaddrudp[count] = (struct sockaddr *) &remoteaddr;
     addrlenudp[count] = sizeof remoteaddr;
     FD_SET(SDARRAY[count], &write_fds);
-    
+    printf("%i\n", SDARRAY[count]);
     count++;
     
 }
@@ -134,7 +134,8 @@ for(;;){
             
     if(FD_ISSET(i, &write_fds)){
             printf("%u is set\n", bt.sqNum);
-            byte_count = sendto(SDARRAY[count-1], "HI", sizeof bt, 0,(struct sockaddr *) remoteaddrudp[count-1], addrlenudp[count-1]);
+            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0,(struct sockaddr *) remoteaddrudp[count-1], addrlenudp[count-1]);
+            printf("%i\n", SDARRAY[count-1]);
             if(byte_count==-1)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
         
