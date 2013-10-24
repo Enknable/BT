@@ -110,7 +110,7 @@ for(;;){
                         if(SDARRAY[count] == -1){
                         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
 }else{
-    printf("%s", bt);
+    printf("%u", bt.sqNum);
     fdmax = SDARRAY[count];
     remoteaddrudp[count] = (struct sockaddr *) &remoteaddr;
     addrlenudp[count] = sizeof remoteaddr;
