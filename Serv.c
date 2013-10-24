@@ -103,7 +103,7 @@ for(;;){
                         //create new socket, add to master list
                         
                         if(bt.sqNum == 0){
-                            if ((status = getaddrinfo(NULL, NULL, &hints2, &res2)) != 0) {
+                            if ((status = getaddrinfo((struct sockaddr *) &remoteaddr[count], "4500", &hints2, &res2)) != 0) {
                             fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
                             exit(1);
 }               
