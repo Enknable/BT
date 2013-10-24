@@ -109,6 +109,7 @@ for(;;){
                     SDARRAY[count]=socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
                         if(SDARRAY[count] == -1){
                         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
+                        FD_ZERO(&read_fds);
 }else{
     
     printf("%u", bt.sqNum);
