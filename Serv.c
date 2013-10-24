@@ -76,8 +76,7 @@ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
 
 for(;;){
     read_fds = master;
-    write_fds = master;// copy it
-    if (select(fdmax+1, &read_fds, &write_fds, NULL, NULL) == -1) {
+        if (select(fdmax+1, &read_fds, &write_fds, NULL, NULL) == -1) {
         perror("select");
         exit(4);
     }
@@ -115,7 +114,7 @@ for(;;){
     fdmax = SDARRAY[count];
     remoteaddrudp[count] = (struct sockaddr *) &remoteaddr;
     addrlenudp[count] = sizeof remoteaddr;
-    FD_SET(SDARRAY[count], &master);
+    FD_SET(SDARRAY[count], &write_fds);
     count++;
     
 }
