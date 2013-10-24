@@ -27,13 +27,15 @@ int main( int argc, char *argv[])
 {
 
 struct port bt;
-int status, SendR,  yes=1, fdmax, newfd, i;
+int SDARRAY[100];
+int status, SendR,  yes=1, fdmax, newfd, i, count = 0;
 struct addrinfo hints, *res;  // will point to the results
 fd_set master;    // master file descriptor list
-fd_set read_fds;  // temp file descriptor list for select()
+fd_set read_fds, write_fds;  // temp file descriptor list for select()
 char buf[256];    // buffer for client data
-struct sockaddr_storage remoteaddr; // client address
-socklen_t addrlen;
+struct sockaddr_storage remoteaddr;
+struct sockaddr * remoteaddrudp[100];// client address
+socklen_t addrlen, addrlenudp[100];
 int byte_count;
 char ipstr[INET6_ADDRSTRLEN];
 
@@ -73,8 +75,9 @@ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
     fdmax = SendR; // so far, it's this one
 
 for(;;){
-    read_fds = master; // copy it
-    if (select(fdmax+1, &read_fds, NULL, NULL, NULL) == -1) {
+    read_fds = master;
+    write_fds = master;// copy it
+    if (select(fdmax+1, &read_fds, &write_fds, NULL, NULL) == -1) {
         perror("select");
         exit(4);
     }
@@ -94,8 +97,39 @@ for(;;){
                         get_in_addr((struct sockaddr*)&remoteaddr),
                         ipstr, sizeof ipstr);
                         printf("from IP address %s\n", ipstr);
+                        
+                        //Open file, get size, place pointer
+                        //check for seq #: If 0 take file size /chunksize = total packets to completion for(totalpackets > 0){sendto(totalpackets, recvR, protocol struct)
+                        //create new socket, add to master list
+                        
+                        if(bt.sqNum == 0){
+                            if ((status = getaddrinfo(NULL, NULL, &hints, &res)) != 0) {
+                            fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
+                            exit(1);
+}               
+                    SDARRAY[count]=socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+                        if(SDARRAY[count] == -1){
+                        fprintf(stderr, "Socket Error: %s\n", strerror(errno));
+}else{
+    
+    fdmax = SDARRAY[count];
+    remoteaddrudp[count] = (struct sockaddr *) &remoteaddr;
+    addrlenudp[count] = sizeof remoteaddr;
+    FD_SET(SDARRAY[count], &master);
+    count++;
+    
+}
+                            
+                        }
+                        
+                        //if seq# =! 0: send packet again
+                        
+                        
                         printf("%u\n", bt.sqNum);
             }
+        }
+        if(FD_ISSET(i, &write_fds)){
+            byte_count = sendto(SDARRAY[count-1], &bt, sizeof bt, 0,(struct sockaddr *) remoteaddrudp[count-1], addrlenudp[count]);
         }
     }
 }
