@@ -36,7 +36,7 @@ int main(){
         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
     
     //craft header, send with seq 0
-    if ((numbytes = sendto(RecvR, &bt, sizeof(bt), 0,
+    if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
              res->ai_addr, res->ai_addrlen)) == -1) {
         perror("talker: sendto");
         exit(1);
