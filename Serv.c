@@ -110,11 +110,15 @@ for(;;){
                         if(SDARRAY[count] == -1){
                         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
 }else{
+    
     printf("%u", bt.sqNum);
     fdmax = SDARRAY[count];
     remoteaddrudp[count] = (struct sockaddr *) &remoteaddr;
     addrlenudp[count] = sizeof remoteaddr;
     FD_SET(SDARRAY[count], &write_fds);
+    if(FD_ISSET(i, &write_fds)){
+            byte_count = sendto(SDARRAY[count], "HI", sizeof bt, 0,(struct sockaddr *) remoteaddrudp[count], addrlenudp[count]);
+        }
     count++;
     
 }
@@ -126,9 +130,6 @@ for(;;){
                         
                         printf("%u\n", bt.sqNum);
             }
-        }
-        if(FD_ISSET(i, &write_fds)){
-            byte_count = sendto(SDARRAY[count-1], "HI", sizeof bt, 0,(struct sockaddr *) remoteaddrudp[count-1], addrlenudp[count]);
         }
     }
 }
