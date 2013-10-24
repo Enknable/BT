@@ -76,7 +76,6 @@ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
 
 for(;;){
     read_fds = master;
-    write_fds = master;
         if (select(fdmax+1, &read_fds, &write_fds, NULL, NULL) == -1) {
         perror("select");
         exit(4);
@@ -117,6 +116,7 @@ for(;;){
     remoteaddrudp[count] = (struct sockaddr *) &remoteaddr;
     addrlenudp[count] = sizeof remoteaddr;
     FD_SET(SDARRAY[count], &master);
+    write_fds = master;
     if(FD_ISSET(i, &write_fds)){
             byte_count = sendto(SDARRAY[count], "HI", sizeof bt, 0,(struct sockaddr *) remoteaddrudp[count], addrlenudp[count]);
             if(byte_count==-1)
