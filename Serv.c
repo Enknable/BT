@@ -112,7 +112,7 @@ for(;;){
                         FD_ZERO(&read_fds);
 }else{
     
-    printf("%u", bt.sqNum);
+    printf("%u\n", bt.sqNum);
     fdmax = SDARRAY[count];
     remoteaddrudp[count] = (struct sockaddr *) &remoteaddr;
     addrlenudp[count] = sizeof remoteaddr;
@@ -131,6 +131,7 @@ for(;;){
             }
         }else{
             write_fds = master;
+            printf("%u\n", bt.sqNum);
     if(FD_ISSET(i, &write_fds)){
             byte_count = sendto(SDARRAY[count-1], "HI", sizeof bt, 0,(struct sockaddr *) remoteaddrudp[count-1], addrlenudp[count-1]);
             if(byte_count==-1)
