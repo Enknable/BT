@@ -29,7 +29,7 @@ int main( int argc, char *argv[])
 struct port bt;
 int SDARRAY[100];
 int status, SendR,  yes=1, fdmax, newfd, i, count = 0;
-struct addrinfo hints, *res;  // will point to the results
+struct addrinfo hints, hints2, *res, *res2;  // will point to the results
 fd_set master;    // master file descriptor list
 fd_set read_fds, write_fds;  // temp file descriptor list for select()
 char buf[256];    // buffer for client data
@@ -103,11 +103,11 @@ for(;;){
                         //create new socket, add to master list
                         
                         if(bt.sqNum == 0){
-                            if ((status = getaddrinfo(NULL, NULL, &hints, &res)) != 0) {
+                            if ((status = getaddrinfo(NULL, NULL, &hints2, &res2)) != 0) {
                             fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
                             exit(1);
 }               
-                    SDARRAY[count]=socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+                    SDARRAY[count]=socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
                         if(SDARRAY[count] == -1){
                         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
 }else{
