@@ -128,7 +128,7 @@ for(;;){
             }
         }
         if(FD_ISSET(i, &write_fds)){
-            byte_count = sendto(SDARRAY[count-1], &bt, sizeof bt, 0,(struct sockaddr *) remoteaddrudp[count-1], addrlenudp[count]);
+            byte_count = sendto(SDARRAY[count-1], "HI", sizeof bt, 0,(struct sockaddr *) remoteaddrudp[count-1], addrlenudp[count]);
         }
     }
 }
