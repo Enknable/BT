@@ -14,7 +14,7 @@
 
 int main(){
     int status, RecvR, numbytes;    
-    uint16_t sqNum = 25600; //Max 65535    
+    uint16_t sqNum = 25900; //Max 65535    
     struct port bt;
     struct addrinfo hints, *res;  // will point to the results
     bt.sqNum = sqNum;
