@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include "bt.h"
+#include <inttypes.h>
 
 
 // get sockaddr, IPv4 or IPv6:
@@ -93,7 +94,7 @@ for(;;){
                         get_in_addr((struct sockaddr*)&remoteaddr),
                         ipstr, sizeof ipstr);
                         printf("from IP address %s\n", ipstr);
-                        printf("Containing Sequence # %i\n", bt.sqNum);
+                        printf("%" PRId16, bt.sqNum);
             }
         }
     }
