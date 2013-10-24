@@ -47,6 +47,11 @@ hints.ai_family = AF_UNSPEC;     // don't care IPv4 or IPv6
 hints.ai_socktype = SOCK_DGRAM; // UDP datagram sockets
 hints.ai_flags = AI_PASSIVE;     // fill in my IP for me
 
+memset(&hints2, 0, sizeof hints2); // make sure the struct is empty
+hints2.ai_family = AF_UNSPEC;     // don't care IPv4 or IPv6
+hints2.ai_socktype = SOCK_DGRAM; // UDP datagram sockets
+hints2.ai_flags = AI_PASSIVE;     // fill in my IP for me
+
 if ((status = getaddrinfo(NULL, "3490", &hints, &res)) != 0) {
     fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
     exit(1);
@@ -135,7 +140,7 @@ for(;;){
     if(FD_ISSET(i, &write_fds)){
             
             //printf("%i\n", remoteaddrudp[count-1]);
-            byte_count = sendto(i, "HI", 2, 0, (struct sockaddr *) &remoteaddr, addrlen);
+            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0, (struct sockaddr *) &remoteaddr, addrlen);
             printf("%u is set\n", bt.sqNum);
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
