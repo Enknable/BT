@@ -34,7 +34,7 @@ fd_set master;    // master file descriptor list
 fd_set read_fds, write_fds;  // temp file descriptor list for select()
 char buf[256];    // buffer for client data
 struct sockaddr_storage remoteaddr;
-struct sockaddr_storage remoteaddrudp[100];// client address
+struct sockaddr *remoteaddrudp[100];// client address
 socklen_t addrlen, addrlenudp[100];
 int byte_count;
 char ipstr[INET6_ADDRSTRLEN];
@@ -119,8 +119,8 @@ for(;;){
     
     printf("%u\n", bt.sqNum);
     fdmax = SDARRAY[count];
-    remoteaddrudp[count] = remoteaddr;
-    addrlenudp[count] = sizeof remoteaddr;
+    remoteaddrudp[count] = res->ai_addr;
+    addrlenudp[count] = res->ai_addrlen;
     FD_SET(SDARRAY[count], &write_fds);
     //printf("%i\n", remoteaddrudp[count]);
     count++;
