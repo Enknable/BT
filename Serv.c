@@ -141,7 +141,10 @@ for(;;){
             
             //printf("%i\n", remoteaddrudp[count-1]);
             byte_count = sendto(SDARRAY[count-1], "HI", 2, 0,(struct sockaddr *) &remoteaddrudp[count-1], addrlenudp[count-1]);
-            printf("%i is set\n", byte_count);
+            inet_ntop(remoteaddr.ss_family,
+                        get_in_addr((struct sockaddr*)&remoteaddrudp[count-1]),
+                        ipstr, sizeof ipstr);
+                        printf("sendto IP address %s\n", ipstr);
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
         
