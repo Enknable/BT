@@ -116,7 +116,7 @@ for(;;){
     fdmax = SDARRAY[count];
     remoteaddrudp[count] = (struct sockaddr *) &remoteaddr;
     addrlenudp[count] = sizeof remoteaddr;
-    FD_SET(SDARRAY[count], &master);
+    FD_SET(SDARRAY[count], &write_fds);
     
     count++;
     
