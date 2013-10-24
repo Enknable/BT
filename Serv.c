@@ -34,7 +34,7 @@ fd_set master;    // master file descriptor list
 fd_set read_fds, write_fds;  // temp file descriptor list for select()
 char buf[256];    // buffer for client data
 struct sockaddr_storage remoteaddr;
-struct sockaddr * remoteaddrudp[100];// client address
+struct sockaddr_storage remoteaddrudp[100];// client address
 socklen_t addrlen, addrlenudp[100];
 int byte_count;
 char ipstr[INET6_ADDRSTRLEN];
@@ -119,7 +119,7 @@ for(;;){
     
     printf("%u\n", bt.sqNum);
     fdmax = SDARRAY[count];
-    remoteaddrudp[count] = (struct sockaddr *) &remoteaddr;
+    remoteaddrudp[count] = remoteaddr;
     addrlenudp[count] = sizeof remoteaddr;
     FD_SET(SDARRAY[count], &write_fds);
     //printf("%i\n", remoteaddrudp[count]);
@@ -140,7 +140,7 @@ for(;;){
     if(FD_ISSET(i, &write_fds)){
             
             //printf("%i\n", remoteaddrudp[count-1]);
-            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0, remoteaddrudp[count-1], addrlenudp[count-1]);
+            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0,(struct sockaddr *) &remoteaddrudp[count-1], addrlenudp[count-1]);
             printf("%i is set\n", byte_count);
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
