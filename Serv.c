@@ -119,8 +119,8 @@ for(;;){
     
     printf("%u\n", bt.sqNum);
     fdmax = SDARRAY[count];
-    remoteaddrudp[count] = res->ai_addr;
-    addrlenudp[count] = res->ai_addrlen;
+    remoteaddrudp[count] = res2->ai_addr;
+    addrlenudp[count] = res2->ai_addrlen;
     FD_SET(SDARRAY[count], &write_fds);
     //printf("%i\n", remoteaddrudp[count]);
     count++;
@@ -140,7 +140,7 @@ for(;;){
     if(FD_ISSET(i, &write_fds)){
             
             //printf("%i\n", remoteaddrudp[count-1]);
-            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0,(struct sockaddr*)&remoteaddrudp[count-1], addrlen);
+            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0,(struct sockaddr*)&remoteaddrudp[count-1], addrlenudp[count-1]);
             inet_ntop(remoteaddr.ss_family,
                         get_in_addr((struct sockaddr*)&remoteaddrudp[count-1]),
                         ipstr, sizeof ipstr);
