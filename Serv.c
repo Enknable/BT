@@ -119,7 +119,7 @@ for(;;){
     
     printf("%u\n", bt.sqNum);
     fdmax = SDARRAY[count];
-    remoteaddrudp[count] = res2->ai_addr;
+    remoteaddrudp[count] = (struct sockaddr*)&remoteaddr;
     addrlenudp[count] = res2->ai_addrlen;
     FD_SET(SDARRAY[count], &write_fds);
     //printf("%i\n", remoteaddrudp[count]);
