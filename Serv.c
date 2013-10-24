@@ -133,9 +133,10 @@ for(;;){
             write_fds = master;
             
     if(FD_ISSET(i, &write_fds)){
-            printf("%u is set\n", bt.sqNum);
+            
             //printf("%i\n", remoteaddrudp[count-1]);
-            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0,remoteaddrudp[count-1], addrlenudp[count-1]);
+            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0,  remoteaddrudp[count-1], addrlenudp[count-1]);
+            printf("%u is set\n", bt.sqNum);
             if(byte_count==-1)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
         
