@@ -152,7 +152,7 @@ for(;;){
         
     }
 }
-//freeaddrinfo(res); // free the linked-list
-
+freeaddrinfo(res); // free the linked-list
+freeaddrinfo(res2);
 return 0;
 }
