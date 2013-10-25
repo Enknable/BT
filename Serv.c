@@ -93,7 +93,8 @@ for(;;){
                 // handle new connections
                 addrlen = sizeof remoteaddr;
                 byte_count = recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
-
+                if(byte_count <= 0)
+                    continue;
                 printf("recv()'d %d bytes of data in buf\n", byte_count); 
                 //This is where the getchunk functions goes. recvfrom -> check struct (App header), if seq#=0 create new sd(socket/descriptor) and fire packets out else create
                 //a TCP connection and send missing chunk.
