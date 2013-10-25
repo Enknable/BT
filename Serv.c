@@ -107,7 +107,7 @@ for(;;){
                         //create new socket, add to master list
                         
                         if(bt.sqNum == 0){
-                            if ((status = getaddrinfo("192.168.1.73", "5000", &hints2, &res2)) != 0) {
+                            if ((status = getaddrinfo(ipstr, "5000", &hints2, &res2)) != 0) {
                             fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
                             exit(1);
 }               
