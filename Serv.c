@@ -147,6 +147,8 @@ for(;;){
                         printf("sendto IP address %s\n", ipstr);
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
+                
+                FD_ZERO(&write_fds);
         
         }
         
