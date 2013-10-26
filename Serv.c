@@ -151,9 +151,10 @@ for(;;){
             }
         }
             
-             
-             //if(SQARRAY[i] < (sz/CHUNK_SIZE))
-                //FD_SET(i, &write_fds);
+                if(i != SendR){
+             if(SQARRAY[i] < (sz/CHUNK_SIZE))
+                FD_SET(i, &write_fds);
+                }
              
     if(FD_ISSET(i, &write_fds)){
             
