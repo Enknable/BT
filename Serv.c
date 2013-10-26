@@ -161,7 +161,7 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
 
                 
-            //getChunk(SQARRAY[i], fp, bt.data, sz );
+            getChunk(SQARRAY[i], fp, bt.data, sz );
             
             printf("%lu\n", sz);
             
@@ -174,7 +174,7 @@ for(;;){
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
-                SQARRAY[i]++;
+                //SQARRAY[i]++;
                     
                 FD_ZERO(&write_fds);
         
