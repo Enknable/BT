@@ -163,6 +163,7 @@ for(;;){
                 
             getChunk(SQARRAY[i], fp, bt.data, sz );
             
+            printf("%lu\n", sz);
             
             //printf("%i\n", remoteaddrudp[count-1]);
             byte_count = sendto(SDARRAY[count-1], "HI", 2, 0,remoteaddrudp[count-1], addrlenudp[count-1]);
@@ -173,7 +174,7 @@ for(;;){
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
-                SQARRAY[SDARRAY[i]]++;
+                SQARRAY[i]++;
                     
                 FD_ZERO(&write_fds);
         
