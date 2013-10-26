@@ -146,7 +146,7 @@ for(;;){
     fdmax = SDARRAY[i];
     remoteaddrudp[i] = res2->ai_addr;
     addrlenudp[i] = res2->ai_addrlen;
-    FD_SET(SDARRAY[i], &write_fds);
+    //FD_SET(SDARRAY[i], &write_fds);
     SQARRAY[SDARRAY[i]] = sqNumb;
     //printf("%i\n", remoteaddrudp[count]);
     count++;
