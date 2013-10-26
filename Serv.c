@@ -102,7 +102,6 @@ for(;;){
     // run through the existing connections looking for data to read
     for(i = 0; i <= fdmax; i++) {
         if (FD_ISSET(i, &read_fds)) { // we got one!!
-            for(j=0; j <= sz/CHUNK_SIZE; j++){
             if (i == SendR) {
                 // handle new connections
                 addrlen = sizeof remoteaddr;
@@ -177,7 +176,7 @@ for(;;){
                     if(SQARRAY[SDARRAY[i]] >= sz/CHUNK_SIZE)
                 FD_ZERO(&write_fds);
     }
-        }
+        
         
     }
 }
