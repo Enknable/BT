@@ -175,7 +175,7 @@ for(;;){
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
-                SQARRAY[i]++;
+                //SQARRAY[i]++;
                     
                 FD_ZERO(&write_fds);
         
