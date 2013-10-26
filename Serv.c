@@ -163,9 +163,9 @@ for(;;){
             printf("%lu\n", sz);
             
             //printf("%i\n", remoteaddrudp[count-1]);
-            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0,remoteaddrudp[count-1], addrlenudp[count-1]);
+            byte_count = sendto(i, "HI", 2, 0,remoteaddrudp[i], addrlenudp[i]);
             inet_ntop(remoteaddr.ss_family,
-                        get_in_addr(remoteaddrudp[count-1]),
+                        get_in_addr(remoteaddrudp[i]),
                         ipstr, sizeof ipstr);
                         printf("sendto IP address %s\n", ipstr);
             if(byte_count==0)
