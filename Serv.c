@@ -156,9 +156,10 @@ for(;;){
             
              
              
-             if(SDARRAY[i] != -1 && SQARRAY[SDARRAY[i]] != -1 ) 
+             if(SDARRAY[i] != -1 && SQARRAY[SDARRAY[i]] !=-1) 
              if(SQARRAY[SDARRAY[i]] < sz/CHUNK_SIZE)
                 FD_SET(SDARRAY[i], &write_fds);
+    
     if(FD_ISSET(SDARRAY[i], &write_fds)){
             
             
