@@ -155,7 +155,6 @@ for(;;){
         }
             
              
-             printf("%i\n", i);
              
              if(SDARRAY[i] != -1 && SQARRAY[SDARRAY[i]] != -1 ) 
              if(SQARRAY[SDARRAY[i]] < sz/CHUNK_SIZE)
