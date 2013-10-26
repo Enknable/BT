@@ -152,8 +152,8 @@ for(;;){
         }
             
              
-             if(SQARRAY[i] < (sz/CHUNK_SIZE))
-                FD_SET(i, &write_fds);
+             //if(SQARRAY[i] < (sz/CHUNK_SIZE))
+                //FD_SET(i, &write_fds);
              
     if(FD_ISSET(i, &write_fds)){
             
@@ -174,7 +174,7 @@ for(;;){
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
-                //SQARRAY[i]++;
+                SQARRAY[i]++;
                     
                 FD_ZERO(&write_fds);
         
