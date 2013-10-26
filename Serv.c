@@ -133,7 +133,7 @@ for(;;){
     sqNumb=0;
     printf("%u\n", bt.sqNum);
     fdmax = SDARRAY[i];
-    remoteaddrudp[i+1] = res2->ai_addr;
+    remoteaddrudp[i] = res2->ai_addr;
     addrlenudp[i] = res2->ai_addrlen;
     FD_SET(SDARRAY[i], &write_fds);
     SQARRAY[SDARRAY[i]] = sqNumb;
@@ -163,9 +163,9 @@ for(;;){
             printf("%lu\n", sz);
             
             //printf("%i\n", remoteaddrudp[count-1]);
-            byte_count = sendto(SDARRAY[i], "HI", 2, 0,remoteaddrudp[i], addrlenudp[i]);
+            byte_count = sendto(SDARRAY[i], "HI", 2, 0, remoteaddrudp[i], addrlenudp[i]);
             inet_ntop(remoteaddr.ss_family,
-                        get_in_addr(remoteaddrudp[i+1]),
+                        get_in_addr(remoteaddrudp[i-1]),
                         ipstr, sizeof ipstr);
                         printf("sendto IP address %s\n", ipstr);
             if(byte_count==0)
