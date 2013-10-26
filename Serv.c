@@ -11,7 +11,7 @@
 #include "bt.h"
 #include <inttypes.h>
 
-#define CHUNK_SIZE 2048
+#define CHUNK_SIZE 1
 
 
 // get sockaddr, IPv4 or IPv6:
