@@ -171,9 +171,9 @@ for(;;){
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
-                SQARRAY[SDARRAY[i]]++;
+                //SQARRAY[SDARRAY[i]]++;
                     
-                    if(SQARRAY[SDARRAY[i]] >= sz/CHUNK_SIZE)
+                    //if(SQARRAY[SDARRAY[i]] >= sz/CHUNK_SIZE)
                 FD_ZERO(&write_fds);
         
         }
