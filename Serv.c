@@ -45,6 +45,9 @@ socklen_t addrlen, addrlenudp[100];
 int byte_count;
 char ipstr[INET6_ADDRSTRLEN];
 
+memset(&SQARRAY, -1, sizeof(SQARRAY));
+memset(&SDARRAY, -1, sizeof(SDARRAY));
+
 fp = fopen("newfile", "rb");
 memset(bt.data, 0, sizeof(bt.data));
 fseek(fp, 0L, SEEK_END);
@@ -153,6 +156,8 @@ for(;;){
             
              
              printf("%i\n", i);
+             
+             if(SDARRAY[i] != -1 && SQARRAY[SDARRAY[i]] != -1 ) 
              if(SQARRAY[SDARRAY[i]] < sz/CHUNK_SIZE)
                 FD_SET(SDARRAY[i], &write_fds);
     if(FD_ISSET(SDARRAY[i], &write_fds)){
