@@ -163,7 +163,7 @@ for(;;){
             printf("%lu\n", sz);
             
             //printf("%i\n", remoteaddrudp[count-1]);
-            byte_count = sendto(i, "HI", 2, 0,remoteaddrudp[i], addrlenudp[i]);
+            byte_count = sendto(SDARRA[i], "HI", 2, 0,remoteaddrudp[i], addrlenudp[i]);
             inet_ntop(remoteaddr.ss_family,
                         get_in_addr(remoteaddrudp[i]),
                         ipstr, sizeof ipstr);
@@ -173,7 +173,7 @@ for(;;){
                 
                 SQARRAY[i]++;
                     
-                    if(SQARRAY[i] >= sz/CHUNK_SIZE)
+                    if(SQARRAY[SDARRAY[i]] >= sz/CHUNK_SIZE)
                 FD_ZERO(&write_fds);
         
         }
