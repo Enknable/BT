@@ -180,7 +180,7 @@ for(;;){
                 
                 SQARRAY[SDARRAY[i]]++;
                     
-                    if(SQARRAY[SDARRAY[i]] >= sz/CHUNK_SIZE)
+                    
                 FD_ZERO(&write_fds);
     }
         
