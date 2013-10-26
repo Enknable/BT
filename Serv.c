@@ -104,6 +104,7 @@ for(;;){
                 
     read_fds = master;
     write_fds = master;
+    
         if (select(fdmax+1, &read_fds, &write_fds, NULL, NULL) == -1) {
         perror("select");
         exit(4);
@@ -186,7 +187,7 @@ for(;;){
                 
                 SQARRAY[SDARRAY[i]]++;
                     
-                    //if(sz/CHUNK_SIZE < SQARRAY[SDARRAY[i]])
+                    if(sz/CHUNK_SIZE < SQARRAY[SDARRAY[i]])
                 FD_ZERO(&write_fds);
     }
         
