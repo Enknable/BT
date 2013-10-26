@@ -153,7 +153,7 @@ for(;;){
         }
             
              
-    if(FD_ISSET(i, &write_fds)){
+    if(FD_ISSET(SDARRAY[j], &write_fds)){
             
             
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
