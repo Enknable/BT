@@ -110,10 +110,10 @@ for(;;){
                 printf("recv()'d %d bytes of data in buf\n", byte_count); 
                 //This is where the getchunk functions goes. recvfrom -> check struct (App header), if seq#=0 create new sd(socket/descriptor) and fire packets out else create
                 //a TCP connection and send missing chunk.
-                    //inet_ntop(remoteaddr.ss_family,
-                        //get_in_addr((struct sockaddr*)&remoteaddr),
-                        //ipstr, sizeof ipstr);
-                        //printf("from IP address %s\n", ipstr);
+                    inet_ntop(remoteaddr.ss_family,
+                        get_in_addr((struct sockaddr*)&remoteaddr),
+                        ipstr, sizeof ipstr);
+                        printf("from IP address %s\n", ipstr);
                         
                         //Open file, get size, place pointer
                         //check for seq #: If 0 take file size /chunksize = total packets to completion for(totalpackets > 0){sendto(totalpackets, recvR, protocol struct)
