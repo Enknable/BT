@@ -102,6 +102,7 @@ for(;;){
     // run through the existing connections looking for data to read
     for(i = 0; i <= fdmax; i++) {
         for(j=0; j <= sz/CHUNK_SIZE; j++){
+            printf("%i", j);
         if (FD_ISSET(i, &read_fds)) { // we got one!!
             if (i == SendR) {
                 // handle new connections
