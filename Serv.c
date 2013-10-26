@@ -11,6 +11,8 @@
 #include "bt.h"
 #include <inttypes.h>
 
+#define CHUNK_SIZE 2048
+
 
 // get sockaddr, IPv4 or IPv6:
 void *get_in_addr(struct sockaddr *sa)
@@ -28,6 +30,10 @@ int main( int argc, char *argv[])
 
 struct port bt;
 int SDARRAY[100];
+int SQARRAY[100];
+int sqNumb;
+long int sz;
+FILE * fp;
 int status, SendR,  yes=1, fdmax, newfd, i, count = 0;
 struct addrinfo hints, hints2, *res, *res2;  // will point to the results
 fd_set master;    // master file descriptor list
@@ -38,6 +44,13 @@ struct sockaddr *remoteaddrudp[100];// client address
 socklen_t addrlen, addrlenudp[100];
 int byte_count;
 char ipstr[INET6_ADDRSTRLEN];
+
+fp = fopen("newfile", "rb");
+memset(bt.data, 0, sizeof(bt.data));
+fseek(fp, 0L, SEEK_END);
+sz = ftell(fp);
+fseek(fp, 0L, SEEK_SET);
+
 
 FD_ZERO(&master);    // clear the master and temp sets
 FD_ZERO(&read_fds);
@@ -111,17 +124,19 @@ for(;;){
                             fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
                             exit(1);
 }               
+                    
                     SDARRAY[count]=socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
                         if(SDARRAY[count] == -1){
                         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
                 
 }else{
-    
+    sqNumb=0;
     printf("%u\n", bt.sqNum);
     fdmax = SDARRAY[count];
     remoteaddrudp[count] = res2->ai_addr;
     addrlenudp[count] = res2->ai_addrlen;
     FD_SET(SDARRAY[count], &write_fds);
+    SQARRAY[SDARRAY[count]] = sqNumb;
     //printf("%i\n", remoteaddrudp[count]);
     count++;
     
@@ -137,7 +152,17 @@ for(;;){
         }
             
              
+             if(SQARRAY[i] < (sz/CHUNK_SIZE))
+                FD_SET(i, &write_fds);
+             
     if(FD_ISSET(i, &write_fds)){
+            
+            
+            //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
+
+                
+            getChunk(SQARRAY[i], fp, bt.data, sz );
+            
             
             //printf("%i\n", remoteaddrudp[count-1]);
             byte_count = sendto(SDARRAY[count-1], "HI", 2, 0,remoteaddrudp[count-1], addrlenudp[count-1]);
@@ -148,6 +173,8 @@ for(;;){
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
+                SQARRAY[SDARRAY[i]]++;
+                    
                 FD_ZERO(&write_fds);
         
         }

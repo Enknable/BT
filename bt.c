@@ -3,10 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <inttypes.h>
 
-#define CHUNK_SIZE 1024
+#define CHUNK_SIZE 2048
 
-char * getChunk(int16_t sqNum, FILE * fp, char data[2048], long int sz){
+char * getChunk(uint16_t sqNum, FILE * fp, char data[2048], long int sz){
     
     memset(data, 0, sizeof(data));
     

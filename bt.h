@@ -5,9 +5,9 @@
 
 struct port {
     
-    int16_t sqNum;
-    int16_t length;
-    int8_t md5[16];
+    uint16_t sqNum;
+    uint16_t length;
+    char md5[16];
     char data[2048];
     
 } __attribute__ ((__packed__)) ;
