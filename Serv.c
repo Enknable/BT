@@ -31,7 +31,7 @@ int main( int argc, char *argv[])
 struct port bt;
 int SDARRAY[100];
 uint16_t SQARRAY[100];
-int sqNumb;
+int sqNumb, j;
 long int sz;
 FILE * fp;
 int status, SendR,  yes=1, fdmax, newfd, i, count = 0;
@@ -101,6 +101,7 @@ for(;;){
 
     // run through the existing connections looking for data to read
     for(i = 0; i <= fdmax; i++) {
+        for(j=0; j <= count; j++){
         if (FD_ISSET(i, &read_fds)) { // we got one!!
             if (i == SendR) {
                 // handle new connections
@@ -158,24 +159,24 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
 
                 
-            getChunk(SQARRAY[SDARRAY[count-1]], fp, bt.data, sz );
+            getChunk(SQARRAY[SDARRAY[j]], fp, bt.data, sz );
             
             printf("%lu\n", sz);
             
             //printf("%i\n", remoteaddrudp[count-1]);
-            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0, remoteaddrudp[count-1], addrlenudp[count-1]);
+            byte_count = sendto(SDARRAY[j], "HI", 2, 0, remoteaddrudp[j], addrlenudp[j]);
             inet_ntop(remoteaddr.ss_family,
-                        get_in_addr(remoteaddrudp[count-1]),
+                        get_in_addr(remoteaddrudp[j]),
                         ipstr, sizeof ipstr);
                         printf("sendto IP address %s\n", ipstr);
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
-                SQARRAY[SDARRAY[count-1]]++;
+                SQARRAY[SDARRAY[j]]++;
                     
-                    if(SQARRAY[SDARRAY[count-1]] >= sz/CHUNK_SIZE)
+                    if(SQARRAY[SDARRAY[j]] >= sz/CHUNK_SIZE)
                 FD_ZERO(&write_fds);
-        
+    }
         }
         
     }
