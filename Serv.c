@@ -29,8 +29,8 @@ int main( int argc, char *argv[])
 {
 
 struct port bt;
-int SDARRAY[10000];
-uint16_t SQARRAY[10000];
+int SDARRAY[100];
+uint16_t SQARRAY[100];
 int sqNumb;
 long int sz;
 FILE * fp;
@@ -164,10 +164,10 @@ for(;;){
             
             //printf("%i\n", remoteaddrudp[count-1]);
             byte_count = sendto(SDARRAY[i], "HI", 2, 0,remoteaddrudp[i], addrlenudp[i]);
-            inet_ntop(remoteaddr.ss_family,
-                        get_in_addr(remoteaddrudp[i]),
-                        ipstr, sizeof ipstr);
-                        printf("sendto IP address %s\n", ipstr);
+           // inet_ntop(remoteaddr.ss_family,
+             //           get_in_addr(remoteaddrudp[i]),
+              //          ipstr, sizeof ipstr);
+               //         printf("sendto IP address %s\n", ipstr);
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
