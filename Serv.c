@@ -101,7 +101,7 @@ for(;;){
 
     // run through the existing connections looking for data to read
     for(i = 0; i <= fdmax; i++) {
-        for(j=0; j <= count+2; j++){
+        for(j=0; j <= sz/CHUNK_SIZE; j++){
         if (FD_ISSET(i, &read_fds)) { // we got one!!
             if (i == SendR) {
                 // handle new connections
@@ -134,8 +134,8 @@ for(;;){
     sqNumb=0;
     printf("%u\n", bt.sqNum);
     fdmax = SDARRAY[count];
-    remoteaddrudp[count] = res2->ai_addr;
-    addrlenudp[count] = res2->ai_addrlen;
+    remoteaddrudp[i] = res2->ai_addr;
+    addrlenudp[i] = res2->ai_addrlen;
     FD_SET(SDARRAY[count], &write_fds);
     SQARRAY[SDARRAY[count]] = sqNumb;
     //printf("%i\n", remoteaddrudp[count]);
@@ -153,7 +153,7 @@ for(;;){
         }
             
              
-    if(FD_ISSET(SDARRAY[j], &write_fds)){
+    if(FD_ISSET(i, &write_fds)){
             
             
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
@@ -164,17 +164,17 @@ for(;;){
             printf("%lu\n", sz);
             
             //printf("%i\n", remoteaddrudp[count-1]);
-            byte_count = sendto(SDARRAY[j], "HI", 2, 0, remoteaddrudp[j], addrlenudp[j]);
+            byte_count = sendto(i, "HI", 2, 0, remoteaddrudp[i], addrlenudp[i]);
             inet_ntop(remoteaddr.ss_family,
-                        get_in_addr(remoteaddrudp[j]),
+                        get_in_addr(remoteaddrudp[i]),
                         ipstr, sizeof ipstr);
                         printf("sendto IP address %s\n", ipstr);
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
-                SQARRAY[SDARRAY[j]]++;
+                SQARRAY[SDARRAY[i]]++;
                     
-                    if(SQARRAY[SDARRAY[j]] >= sz/CHUNK_SIZE)
+                    if(SQARRAY[SDARRAY[i]] >= sz/CHUNK_SIZE)
                 FD_ZERO(&write_fds);
     }
         }
