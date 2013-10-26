@@ -126,7 +126,7 @@ for(;;){
 }               
                     
                     SDARRAY[i]=socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
-                        if(SDARRAY[count] == -1){
+                        if(SDARRAY[i] == -1){
                         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
                 
 }else{
@@ -158,7 +158,7 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
 
                 
-            //getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz );
+            getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz );
             
             printf("%lu\n", sz);
             
