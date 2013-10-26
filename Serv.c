@@ -152,6 +152,8 @@ for(;;){
         }
             
              
+             printf("&i\n", i);
+             
     if(FD_ISSET(SDARRAY[i], &write_fds)){
             
             
