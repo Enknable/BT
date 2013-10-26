@@ -30,7 +30,7 @@ int main( int argc, char *argv[])
 
 struct port bt;
 int SDARRAY[100];
-int SQARRAY[100];
+uint16_t SQARRAY[100];
 int sqNumb;
 long int sz;
 FILE * fp;

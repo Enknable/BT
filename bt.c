@@ -18,7 +18,7 @@ char * getChunk(uint16_t sqNum, FILE * fp, char data[2048], long int sz){
     }
     
     else{
-        fread(data, 2048 , 1, fp);
+        fread(data, CHUNK_SIZE , 1, fp);
     }
 
     return data;
