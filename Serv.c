@@ -97,11 +97,7 @@ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
 
 for(;;){
     
-    
-    if(SDARRAY[i] != -1 && SQARRAY[SDARRAY[i]] !=-1) 
-             if(SQARRAY[SDARRAY[i]] < sz/CHUNK_SIZE)
-                FD_SET(SDARRAY[i], &master);
-                
+
     read_fds = master;
     write_fds = master;
     
@@ -164,7 +160,10 @@ for(;;){
             
              
              
-            
+             if(SDARRAY[i] != -1 && SQARRAY[SDARRAY[i]] !=-1) 
+             if(SQARRAY[SDARRAY[i]] < sz/CHUNK_SIZE)
+                FD_SET(SDARRAY[i], &master);
+                
     
     if(FD_ISSET(SDARRAY[i], &write_fds)){
             
