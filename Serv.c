@@ -125,18 +125,18 @@ for(;;){
                             exit(1);
 }               
                     
-                    SDARRAY[i]=socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
-                        if(SDARRAY[i] == -1){
+                    SDARRAY[count]=socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
+                        if(SDARRAY[count] == -1){
                         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
                 
 }else{
     sqNumb=0;
     printf("%u\n", bt.sqNum);
-    fdmax = SDARRAY[i];
-    remoteaddrudp[i] = res2->ai_addr;
-    addrlenudp[i] = res2->ai_addrlen;
-    FD_SET(SDARRAY[i], &write_fds);
-    SQARRAY[SDARRAY[i]] = sqNumb;
+    fdmax = SDARRAY[count];
+    remoteaddrudp[count] = res2->ai_addr;
+    addrlenudp[count] = res2->ai_addrlen;
+    FD_SET(SDARRAY[count], &write_fds);
+    SQARRAY[SDARRAY[count]] = sqNumb;
     //printf("%i\n", remoteaddrudp[count]);
     count++;
     
@@ -158,22 +158,22 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
 
                 
-            getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz );
+            getChunk(SQARRAY[SDARRAY[count-1]], fp, bt.data, sz );
             
             printf("%lu\n", sz);
             
             //printf("%i\n", remoteaddrudp[count-1]);
-            byte_count = sendto(SDARRAY[i], "HI", 2, 0, remoteaddrudp[i], addrlenudp[i]);
+            byte_count = sendto(SDARRAY[count-1], "HI", 2, 0, remoteaddrudp[count-1], addrlenudp[count-1]);
             inet_ntop(remoteaddr.ss_family,
-                        get_in_addr(remoteaddrudp[i-1]),
+                        get_in_addr(remoteaddrudp[count-1]),
                         ipstr, sizeof ipstr);
                         printf("sendto IP address %s\n", ipstr);
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
-                SQARRAY[SDARRAY[i]]++;
+                SQARRAY[SDARRAY[count-1]]++;
                     
-                    if(SQARRAY[SDARRAY[i]] >= sz/CHUNK_SIZE)
+                    if(SQARRAY[SDARRAY[count-1]] >= sz/CHUNK_SIZE)
                 FD_ZERO(&write_fds);
         
         }
