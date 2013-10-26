@@ -100,9 +100,10 @@ for(;;){
     
     if(SDARRAY[i] != -1 && SQARRAY[SDARRAY[i]] !=-1) 
              if(SQARRAY[SDARRAY[i]] < sz/CHUNK_SIZE)
-                FD_SET(SDARRAY[i], &write_fds);
+                FD_SET(SDARRAY[i], &master);
                 
     read_fds = master;
+    write_fds = master;
         if (select(fdmax+1, &read_fds, &write_fds, NULL, NULL) == -1) {
         perror("select");
         exit(4);
