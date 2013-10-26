@@ -31,7 +31,7 @@ int main( int argc, char *argv[])
 struct port bt;
 int SDARRAY[100];
 uint16_t SQARRAY[100];
-int sqNumb, j;
+int sqNumb, j=0;
 long int sz;
 FILE * fp;
 int status, SendR,  yes=1, fdmax, newfd, i, count = 0;
@@ -153,7 +153,8 @@ for(;;){
             
              
              printf("%i\n", i);
-             
+             if(SQARRAY[SDARRAY[i]] < sz/CHUNK_SIZE)
+                FD_SET(SDARRAY[i], &write_fds);
     if(FD_ISSET(SDARRAY[i], &write_fds)){
             
             
