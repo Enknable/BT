@@ -29,8 +29,8 @@ int main( int argc, char *argv[])
 {
 
 struct port bt;
-int SDARRAY[100];
-uint16_t SQARRAY[100];
+int SDARRAY[10000];
+uint16_t SQARRAY[10000];
 int sqNumb;
 long int sz;
 FILE * fp;
