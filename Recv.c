@@ -79,7 +79,7 @@ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
 
 for(;;){
 
-    numb_bytes = recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
+    numb_bytes+ = recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
     if(bt.sqNum != sqNumb){
         printf("dropped packet");
@@ -92,7 +92,7 @@ for(;;){
 
     }else{
     sqNumb++;
-    printf("%s\n", bt.data);
+    printf("%i\n", numb_bytes);
     }
 }    //If non-sequencial open TCP and receive missing chunk
     
