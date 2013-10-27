@@ -160,7 +160,7 @@ for(;;){
                         if(bt.sqNum != 0){
                             if(bt.ack == 1){
                             ACK[bt.WHOAMI] = 1;
-                            
+                            sleep(0.01);
                             }else{
                             
                             ACK[bt.WHOAMI] = bt.ack;
