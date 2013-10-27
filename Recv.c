@@ -16,11 +16,12 @@ int main(){
     int status, RecvR, numbytes, SendR, yes=1, numb_bytes;
     struct sockaddr_storage remoteaddr;
     socklen_t addrlen;
-    uint16_t sqNum = 0; //Max 65535    
+    uint16_t sqNumb = 0; //Max 65535    
     struct port bt;
+    FILE * fp;
     
     struct addrinfo hints, *res;  // will point to the results
-    bt.sqNum = sqNum;
+    bt.sqNum = sqNumb;
     
     memset(&hints, 0, sizeof hints); // make sure the struct is empty
     hints.ai_family = AF_UNSPEC;     // don't care IPv4 or IPv6
@@ -80,8 +81,19 @@ for(;;){
 
     numb_bytes = recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
+    if(bt.sqNum != sqNumb){
+        prinft("dropped packet");
+        bt.sqNum = sqNumb;
+         if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
+             res->ai_addr, res->ai_addrlen)) == -1) {
+        perror("talker: sendto");
+        exit(1);
+    }
+
+    }else{
+    sqNumb++;
     printf("%s\n", bt.data);
-    
+    }
 }    //If non-sequencial open TCP and receive missing chunk
     
     

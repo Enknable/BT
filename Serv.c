@@ -151,7 +151,9 @@ for(;;){
                             
                         }
                         
-                        
+                        if(bt.sqNum != 0){
+                            SQARRAY[SDARRAY[i]] = bt.sqNum;
+                        }
                         //if seq# =! 0: send packet again
                         
                         
