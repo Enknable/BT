@@ -156,37 +156,16 @@ for(;;){
                         }
                         
                         if(bt.sqNum != 0){
-                            FD_CLR(bt.WHOAMI, &master);
                             if ((status = getaddrinfo(ipstr, "5000", &hints2, &res2)) != 0) {
                             fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
                             exit(1);
                             }
+                            SQARRAY[bt.WHOAMI] = bt.sqNum;
                             
-                            
-                            TempR = socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
-                                if(TempR == -1){
-                                    fprintf(stderr, "Socket Error: %s\n", strerror(errno));
-                                }else{
-                            getChunk(bt.sqNum, fp, bt.data, sz );
-                            
-                            byte_count = sendto(TempR, &bt, sizeof bt, 0, res2->ai_addr, res2->ai_addrlen);
-                            SQARRAY[bt.WHOAMI]++;
-                            inet_ntop(remoteaddr.ss_family,
-                                get_in_addr(remoteaddrudp[i]),
-                                ipstr, sizeof ipstr);
-                                printf("sendto IP address %s\n", ipstr);
-                        
-                        if(byte_count==0)
-                                fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
-                                }
-                            
-                        }
-                        //if seq# =! 0: send packet again
-                        
                         
                         printf("%u\n", bt.sqNum);
             }
-        }
+        
             
              
              
