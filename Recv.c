@@ -68,9 +68,13 @@ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
     exit(1);
 } 
 
+    for(;;){
+
     numb_bytes = recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
     printf("%lu\n", bt.sqNum);
+    
+    };
     //If non-sequencial open TCP and receive missing chunk
     
     
