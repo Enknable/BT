@@ -165,8 +165,8 @@ for(;;){
                         
                         printf("%u\n", bt.sqNum);
             }
-        
-            
+            }
+        }
              
              
              
