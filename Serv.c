@@ -183,7 +183,7 @@ for(;;){
             //printf("%i\n", remoteaddrudp[count-1]);
             
             
-            if(rand() % 10 == 10)
+            if(rand() % 10 == 9)
                 bt.sqNum++;
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
             bt.sqNum++;
