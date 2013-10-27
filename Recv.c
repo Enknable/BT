@@ -98,6 +98,7 @@ numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr,
     }else{
         sqNumb++;
         printf("%i\n", sqNumb);
+        printf("%i\n", bt.sqNum);
         break;
     
     }
