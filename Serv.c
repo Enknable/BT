@@ -159,7 +159,9 @@ for(;;){
                             }
                             SQARRAY[SDARRAY[i]] = bt.sqNum;
                             getChunk(SQARRAY[SDARRAY[j]], fp, bt.data, sz );
-                            byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
+                            
+                            byte_count = sendto(SDARRAY[i-1], &bt, sizeof bt, 0, res2->ai_addr, res2->ai_addrlen);
+                            SQARRAY[SDARRAY[i]]++;
                             inet_ntop(remoteaddr.ss_family,
                                 get_in_addr(remoteaddrudp[i]),
                                 ipstr, sizeof ipstr);
