@@ -96,8 +96,10 @@ numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr,
     if(bt.sqNum != sqNumb){
     continue;
     }else{
+        sqNum++;
         break;
-    }
+    
+    }}
     }
     }else{
     sqNumb++;
