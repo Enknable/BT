@@ -12,7 +12,9 @@ struct port {
     int WHOAMI;
     int ack;
     
-    port(): ack(0);
+    port(): ack(0){
+    }
+    }
     
 } __attribute__ ((__packed__)) ;
     
