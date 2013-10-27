@@ -165,11 +165,11 @@ for(;;){
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
                             ACK[bt.WHOAMI] = 1;
+                            SQARRAY[bt.WHOAMI] = bt.sqNum;
                             sleep(5);
                             }else{
                             printf("I'm HERE");
                             ACK[bt.WHOAMI] = bt.ack;
-                            SQARRAY[bt.WHOAMI] = bt.sqNum;
                             //getChunk
                             sendto(SDARRAY[bt.WHOAMI], &bt, sizeof bt, 0, remoteaddrudp[bt.WHOAMI], addrlenudp[bt.WHOAMI]);
                             FD_CLR(SDARRAY[bt.WHOAMI], &master);
