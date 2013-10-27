@@ -9,6 +9,7 @@ struct port {
     uint16_t length;
     char md5[16];
     char data[2048];
+    int WHOAMI;
     
 } __attribute__ ((__packed__)) ;
     
