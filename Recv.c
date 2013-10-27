@@ -91,6 +91,7 @@ for(;;){
         exit(1);
     }
     for(;;){
+        numb_byte=0;
 numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     if(numb_bytes == 0)
     continue;
