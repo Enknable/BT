@@ -155,7 +155,7 @@ for(;;){
     
 }
                             
-                        }
+                        }else{
                         
                         printf("%" PRId16, bt.sqNum);
                         
@@ -173,6 +173,7 @@ for(;;){
                         printf("%u\n", bt.sqNum);
                             }
             }
+                        }
             }
         }
              
