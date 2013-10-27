@@ -40,7 +40,7 @@ int main(){
         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
     
     
-
+    bt.ack = 0;
     //craft header, send with seq 0
     if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
              res->ai_addr, res->ai_addrlen)) == -1) {
@@ -97,6 +97,7 @@ numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr,
         printf("nope");
     continue;
     }else{
+        bt.ack = 1;
         if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
              res->ai_addr, res->ai_addrlen)) == -1) {
         perror("talker: sendto");

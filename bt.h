@@ -11,9 +11,6 @@ struct port {
     char data[2048];
     int WHOAMI;
     int ack;
-    
-    port(): ack(0){
-    }
     }
     
 } __attribute__ ((__packed__)) ;
