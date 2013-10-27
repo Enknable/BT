@@ -47,7 +47,27 @@ int main(){
     
     
     //select recvfrom/check seq # of received packets
-    
+    if ((status = getaddrinfo(NULL, "5000", &hints, &res)) != 0) {
+    fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
+    exit(1);
+}
+
+SendR = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+if(SendR == -1)
+    fprintf(stderr, "Socket Error: %s\n", strerror(errno));
+
+
+if(bind(SendR, res->ai_addr, res->ai_addrlen) == -1)
+    fprintf(stderr,"Bind Error: %s\n", strerror(errno));
+
+
+
+//lose the pesky "Address already in use" error message
+if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
+    perror("setsockopt");
+    exit(1);
+} 
+
     numb_bytes = recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
     printf("%lu\n", bt.sqNum);
