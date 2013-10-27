@@ -133,7 +133,7 @@ for(;;){
 }               
                     
                     SDARRAY[count]=socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
-                        if(SDARRAY[i] == -1){
+                        if(SDARRAY[count] == -1){
                         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
                 
 }else{
