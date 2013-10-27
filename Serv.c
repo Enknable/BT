@@ -203,7 +203,10 @@ for(;;){
             j=rand()%100;
             printf("%i", j);
                 if(j == 1)
-                bt.sqNum++;
+                SQARRAY[SD];
+ [i] ++ 
+                             bt.sqNum = SQARRAY[SDARRAY[i]];
+                
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
                 inet_ntop(remoteaddr.ss_family,
                         get_in_addr(remoteaddrudp[i]),
