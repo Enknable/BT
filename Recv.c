@@ -48,9 +48,9 @@ int main(){
     
     //select recvfrom/check seq # of received packets
     
+    numb_bytes = recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
-    
-    
+    printf("%lu\n", bt.sqNum);
     //If non-sequencial open TCP and receive missing chunk
     
     
