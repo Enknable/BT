@@ -162,12 +162,12 @@ for(;;){
                             ACK[bt.WHOAMI] = 1;
                             
                             }else{
-                            FD_CLR(SDARRAY[bt.WHOAMI], &master);
+                            
                             ACK[bt.WHOAMI] = bt.ack;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
                             //getChunk
                             sendto(SDARRAY[bt.WHOAMI], &bt, sizeof bt, 0, remoteaddrudp[bt.WHOAMI], addrlenudp[bt.WHOAMI]);
-                            
+                            FD_CLR(SDARRAY[bt.WHOAMI], &master);
                         printf("%u\n", bt.sqNum);
                             }
             }
