@@ -187,6 +187,9 @@ for(;;){
                 
                 SQARRAY[SDARRAY[i]]++;
                     
+                    
+                    printf("%i\n", SQARRAY[SDARRAY[i]]);
+                    
                     if(sz/CHUNK_SIZE < SQARRAY[SDARRAY[i]])
                 FD_ZERO(&write_fds);
     }
