@@ -31,11 +31,12 @@ int main( int argc, char *argv[])
 struct port bt;
 time_t t;
 int SDARRAY[100];
+int WHOAMI[100];
 uint16_t SQARRAY[100];
 int sqNumb, j=0;
 long int sz;
 FILE * fp;
-int status, SendR,  yes=1, fdmax, newfd, i, count = 0;
+int status, SendR,  yes=1, fdmax, newfd, i, count = 0, TempR;
 struct addrinfo hints, hints2, *res, *res2;  // will point to the results
 fd_set master;    // master file descriptor list
 fd_set read_fds, write_fds;  // temp file descriptor list for select()
@@ -159,11 +160,16 @@ for(;;){
                             fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
                             exit(1);
                             }
-                            SQARRAY[SDARRAY[i]] = bt.sqNum;
-                            getChunk(SQARRAY[SDARRAY[j]], fp, bt.data, sz );
                             
-                            byte_count = sendto(SDARRAY[i-1], &bt, sizeof bt, 0, res2->ai_addr, res2->ai_addrlen);
-                            SQARRAY[SDARRAY[i]]++;
+                            
+                            TempR = socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
+                                if(TempR == -1){
+                                    fprintf(stderr, "Socket Error: %s\n", strerror(errno));
+                                }else{
+                            getChunk(bt.sqNum, fp, bt.data, sz );
+                            
+                            byte_count = sendto(TempR, &bt, sizeof bt, 0, res2->ai_addr, res2->ai_addrlen);
+                            SQARRAY[bt.WHOAMI]++;
                             inet_ntop(remoteaddr.ss_family,
                                 get_in_addr(remoteaddrudp[i]),
                                 ipstr, sizeof ipstr);
@@ -171,7 +177,7 @@ for(;;){
                         
                         if(byte_count==0)
                                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
-                            
+                                }
                             
                         }
                         //if seq# =! 0: send packet again
@@ -208,7 +214,7 @@ for(;;){
  [i]  += 1 
                 }             bt.sqNum = SQARRAY[SDARRAY[i]];
                 
-            byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
+   bt.WHOAMI = SDARRAY[i];         byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
                 inet_ntop(remoteaddr.ss_family,
                         get_in_addr(remoteaddrudp[i]),
                         ipstr, sizeof ipstr);
