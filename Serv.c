@@ -201,8 +201,8 @@ for(;;){
             
             
             
-            j=rand()%10;
-            printf("%i", j);
+            j=(rand()%10);
+            printf("%i\n", j);
                 if(j == 1){
                 SQARRAY[SD];
  [i]  += 1 
