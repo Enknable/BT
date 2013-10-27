@@ -81,6 +81,7 @@ for(;;){
 
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
+    
     if(bt.sqNum != sqNumb){
         printf("dropped packet");
         bt.sqNum = sqNumb;
@@ -89,14 +90,18 @@ for(;;){
         perror("talker: sendto");
         exit(1);
     }
-
+    for(;;){
+numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
+    if(bt.sqNum == sqNumb)
+    break;
+    }
     }else{
     sqNumb++;
     printf("%i\n", numb_bytes);
     }
 }    //If non-sequencial open TCP and receive missing chunk
     
-    
+
  
     return 0;
 }
