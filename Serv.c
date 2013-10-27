@@ -166,7 +166,7 @@ for(;;){
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
                             ACK[bt.WHOAMI] = 1;
-                            SQARRAY[bt.WHOAMI] = bt.sqNum+1;
+                            SQARRAY[bt.WHOAMI] = bt.sqNum;
                             sleep(5);
                             
                             }else{
