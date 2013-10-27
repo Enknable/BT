@@ -180,7 +180,8 @@ for(;;){
             
             //printf("%i\n", remoteaddrudp[count-1]);
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
-            inet_ntop(remoteaddr.ss_family,
+            bt.sqNum++;
+                inet_ntop(remoteaddr.ss_family,
                         get_in_addr(remoteaddrudp[i]),
                         ipstr, sizeof ipstr);
                         printf("sendto IP address %s\n", ipstr);
