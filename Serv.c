@@ -213,7 +213,7 @@ for(;;){
             printf("%i\n", j);
                 if(j == 1)
                 SQARRAY[SDARRAY[i]]++;
-                bt.sqNum = SQARRAY[SDARRAY[i]];
+                bt.sqNum = SQARRAY[SDARRAY[i]] -1;
                 
             bt.WHOAMI = SDARRAY[i];        
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
