@@ -167,7 +167,7 @@ for(;;){
                             if(bt.ack == 1){
                                 printf("imhere");
                             ACK[bt.WHOAMI] = 1;
-                            SQARRAY[bt.WHOAMI] = bt.sqNum;
+                            SQARRAY[bt.WHOAMI] = bt.sqNum-1;
                             sleep(5);
                             
                             }else{
