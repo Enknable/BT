@@ -201,6 +201,7 @@ for(;;){
             
             
             j=rand()%100;
+            printf("%i", j);
                 if(j == 1)
                 bt.sqNum++;
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
