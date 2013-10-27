@@ -200,7 +200,7 @@ for(;;){
             
             
             
-            j=rand()%100;
+            j=rand()%10;
             printf("%i", j);
                 if(j == 1)
                 SQARRAY[SD];
