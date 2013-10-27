@@ -186,7 +186,6 @@ for(;;){
             if(rand() % 10 == 9)
                 bt.sqNum++;
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
-            bt.sqNum++;
                 inet_ntop(remoteaddr.ss_family,
                         get_in_addr(remoteaddrudp[i]),
                         ipstr, sizeof ipstr);
