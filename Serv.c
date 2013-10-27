@@ -171,7 +171,7 @@ for(;;){
                             sleep(5);
                             
                             }else{
-                            
+                            printf("%i ack \n", bt.ack);
                             if ((status = getaddrinfo(ipstr, "5000", &hints2, &res2)) != 0) {
                             fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
                             exit(1);
