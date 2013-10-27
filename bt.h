@@ -10,6 +10,7 @@ struct port {
     char md5[16];
     char data[2048];
     int WHOAMI;
+    int ack = 0;
     
 } __attribute__ ((__packed__)) ;
     
