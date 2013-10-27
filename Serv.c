@@ -157,6 +157,8 @@ for(;;){
                             
                         }
                         
+                        printf("%" PRId16, bt.sqNum);
+                        
                         if(bt.sqNum > 0){
                             if(bt.ack == 1){
                             ACK[bt.WHOAMI] = 1;
