@@ -41,6 +41,7 @@ int main(){
     
     
     //craft header, send with seq 0
+    bt.ack=0;
     if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
              res->ai_addr, res->ai_addrlen)) == -1) {
         perror("talker: sendto");
@@ -48,7 +49,7 @@ int main(){
     }
 
     
-    bt.ack=0;
+    
     
     
     //select recvfrom/check seq # of received packets
@@ -77,6 +78,7 @@ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
     numb_bytes = 0;
 
 for(;;){
+
 
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
