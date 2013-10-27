@@ -105,7 +105,6 @@ numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr,
         perror("talker: sendto");
         exit(1);
     }
-        sqNumb++;
         printf("%i 1 \n", sqNumb);
         printf("%i 2 \n", bt.sqNum);
         break;
