@@ -46,6 +46,8 @@ socklen_t addrlen, addrlenudp[100];
 int byte_count;
 char ipstr[INET6_ADDRSTRLEN];
 
+srand((unsigned) time(&t));
+
 memset(&SQARRAY, -1, sizeof(SQARRAY));
 memset(&SDARRAY, -1, sizeof(SDARRAY));
 
@@ -190,7 +192,6 @@ for(;;){
             
             
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
-             srand((unsigned) time(&t));
                 
             getChunk(SQARRAY[SDARRAY[j]], fp, bt.data, sz );
             
