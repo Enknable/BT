@@ -155,11 +155,13 @@ for(;;){
     
 }
                             
-                        }else{
+                        }
                         
                         
                         
-                        if(bt.sqNum > 0){
+                        
+            }
+            if(bt.sqNum > 0){
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
                             ACK[bt.WHOAMI] = 1;
@@ -173,8 +175,6 @@ for(;;){
                             FD_CLR(SDARRAY[bt.WHOAMI], &master);
                         printf("%u\n", bt.sqNum);
                             }
-            }
-                        }
             }
         }
              
