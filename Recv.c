@@ -92,7 +92,7 @@ for(;;){
     }
     for(;;){
 numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
-    if(numb_bytes = 0)
+    if(numb_bytes == 0)
     continue;
     if(bt.sqNum == sqNumb)
     break;
