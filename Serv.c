@@ -166,7 +166,9 @@ for(;;){
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
                             ACK[bt.WHOAMI] = 1;
+                            SQARRAY[bt.WHOAMI] = bt.sqNum+1;
                             sleep(5);
+                            
                             }else{
                             
                             if ((status = getaddrinfo(ipstr, "5000", &hints2, &res2)) != 0) {
