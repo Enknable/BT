@@ -29,6 +29,7 @@ int main( int argc, char *argv[])
 {
 
 struct port bt;
+time_t t;
 int SDARRAY[100];
 uint16_t SQARRAY[100];
 int sqNumb, j=0;
@@ -172,13 +173,17 @@ for(;;){
             
             
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
-
+             srand((unsigned) time(&t));
                 
             getChunk(SQARRAY[SDARRAY[j]], fp, bt.data, sz );
             
             printf("%i\n", i);
             
             //printf("%i\n", remoteaddrudp[count-1]);
+            
+            
+            if(rand() % 10 == 10)
+                bt.sqNum++;
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
             bt.sqNum++;
                 inet_ntop(remoteaddr.ss_family,
