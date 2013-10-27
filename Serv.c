@@ -153,8 +153,22 @@ for(;;){
                         }
                         
                         if(bt.sqNum != 0){
-                            i--;
+                            if ((status = getaddrinfo(ipstr, "5000", &hints2, &res2)) != 0) {
+                            fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
+                            exit(1);
+                            }
                             SQARRAY[SDARRAY[i]] = bt.sqNum;
+                            getChunk(SQARRAY[SDARRAY[j]], fp, bt.data, sz );
+                            byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
+                            inet_ntop(remoteaddr.ss_family,
+                                get_in_addr(remoteaddrudp[i]),
+                                ipstr, sizeof ipstr);
+                                printf("sendto IP address %s\n", ipstr);
+                        
+                        if(byte_count==0)
+                                fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
+                            
+                            
                         }
                         //if seq# =! 0: send packet again
                         
