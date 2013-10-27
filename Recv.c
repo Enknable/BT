@@ -20,13 +20,18 @@ int main(){
     struct port bt;
     FILE * fp;
     
-    struct addrinfo hints, *res;  // will point to the results
+    struct addrinfo hints, *res, hints2, *res2;  // will point to the results
     bt.sqNum = sqNumb;
     
     memset(&hints, 0, sizeof hints); // make sure the struct is empty
     hints.ai_family = AF_UNSPEC;     // don't care IPv4 or IPv6
     hints.ai_socktype = SOCK_DGRAM; // UDP datagram sockets
     hints.ai_flags = AI_PASSIVE;     // fill in my IP for me
+    
+    memset(&hints2, 0, sizeof hints2); // make sure the struct is empty
+    hints2.ai_family = AF_UNSPEC;     // don't care IPv4 or IPv6
+    hints2.ai_socktype = SOCK_DGRAM; // UDP datagram sockets
+    hints2.ai_flags = AI_PASSIVE;     // fill in my IP for me
 
     if ((status = getaddrinfo("192.168.1.77", "3490", &hints, &res)) != 0) {
         
@@ -53,17 +58,17 @@ int main(){
     
     
     //select recvfrom/check seq # of received packets
-    if ((status = getaddrinfo(NULL, "5000", &hints, &res)) != 0) {
+    if ((status = getaddrinfo(NULL, "5000", &hints2, &res2)) != 0) {
     fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
     exit(1);
 }
 
-SendR = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+SendR = socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
 if(SendR == -1)
     fprintf(stderr, "Socket Error: %s\n", strerror(errno));
 
 
-if(bind(SendR, res->ai_addr, res->ai_addrlen) == -1)
+if(bind(SendR, res2->ai_addr, res2->ai_addrlen) == -1)
     fprintf(stderr,"Bind Error: %s\n", strerror(errno));
 
 
