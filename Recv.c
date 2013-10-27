@@ -13,9 +13,12 @@
 #include <inttypes.h>
 
 int main(){
-    int status, RecvR, numbytes;    
+    int status, RecvR, numbytes, SendR, yes=1, numb_bytes;
+    struct sockaddr_storage remoteaddr;
+    socklen_t addrlen
     uint16_t sqNum = 0; //Max 65535    
     struct port bt;
+    
     struct addrinfo hints, *res;  // will point to the results
     bt.sqNum = sqNum;
     
@@ -34,7 +37,7 @@ int main(){
 
     if(RecvR == -1)
         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
-    
+
     //craft header, send with seq 0
     if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
              res->ai_addr, res->ai_addrlen)) == -1) {
@@ -68,13 +71,13 @@ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
     exit(1);
 } 
 
-    for(;;){
+    addrlen = sizeof remoteaddr;
+
 
     numb_bytes = recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
-    printf("%lu\n", bt.sqNum);
+    printf("%i\n", bt.sqNum);
     
-    };
     //If non-sequencial open TCP and receive missing chunk
     
     
