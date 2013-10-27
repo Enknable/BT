@@ -156,6 +156,7 @@ for(;;){
                         }
                         
                         if(bt.sqNum != 0){
+                            FD_CLR(bt.WHOAMI, &master);
                             if ((status = getaddrinfo(ipstr, "5000", &hints2, &res2)) != 0) {
                             fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
                             exit(1);
@@ -213,7 +214,8 @@ for(;;){
                 SQARRAY[SDARRAY[i]]++;
                 bt.sqNum = SQARRAY[SDARRAY[i]];
                 
-   bt.WHOAMI = SDARRAY[i];         byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
+            bt.WHOAMI = SDARRAY[i];        
+            byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
                 inet_ntop(remoteaddr.ss_family,
                         get_in_addr(remoteaddrudp[i]),
                         ipstr, sizeof ipstr);
