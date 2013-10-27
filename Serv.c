@@ -162,16 +162,23 @@ for(;;){
                         
             
             if(bt.sqNum > 0){
+                
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
                             ACK[bt.WHOAMI] = 1;
-                            SQARRAY[bt.WHOAMI] = bt.sqNum;
                             sleep(5);
                             }else{
+                            
+                            if ((status = getaddrinfo(ipstr, "5000", &hints2, &res2)) != 0) {
+                            fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
+                            exit(1);
+}               
+                            
+                            SQARRAY[bt.WHOAMI] = bt.sqNum;
                             printf("I'm HERE");
                             ACK[bt.WHOAMI] = bt.ack;
                             //getChunk
-                            sendto(SDARRAY[bt.WHOAMI], &bt, sizeof bt, 0, remoteaddrudp[bt.WHOAMI], addrlenudp[bt.WHOAMI]);
+                            sendto(SDARRAY[bt.WHOAMI], &bt, sizeof bt, 0, res2->ai_addr , res2->ai_addrlen);
                             FD_CLR(SDARRAY[bt.WHOAMI], &master);
                         printf("%u\n", bt.sqNum);
                             }
