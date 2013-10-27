@@ -165,7 +165,7 @@ for(;;){
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
                             ACK[bt.WHOAMI] = 1;
-                            printf("I'm here");
+                            sleep(5);
                             }else{
                             printf("I'm HERE");
                             ACK[bt.WHOAMI] = bt.ack;
