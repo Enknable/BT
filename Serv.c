@@ -160,13 +160,14 @@ for(;;){
                         if(bt.sqNum != 0){
                             if(bt.ack == 1){
                             ACK[bt.WHOAMI] = 1;
+                            SQARRAY[SDARRAY[i]]++;
                             }else{
                             FD_CLR(SDARRAY[bt.WHOAMI], &master);
                             ACK[bt.WHOAMI] = bt.ack;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
                             //getChunk
                             sendto(SDARRAY[bt.WHOAMI], &bt, sizeof bt, 0, remoteaddrudp[bt.WHOAMI], addrlenudp[bt.WHOAMI]);
-                        
+                            
                         printf("%u\n", bt.sqNum);
                             }
             }
