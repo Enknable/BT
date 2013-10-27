@@ -160,7 +160,7 @@ for(;;){
                         
                         
                         
-            }
+            
             if(bt.sqNum > 0){
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
@@ -176,6 +176,7 @@ for(;;){
                         printf("%u\n", bt.sqNum);
                             }
             }
+        }
         }
              
              
