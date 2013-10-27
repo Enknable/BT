@@ -143,7 +143,7 @@ for(;;){
                 
 }else{
     sqNumb=0;
-    ACK[count] = 1;
+    ACK[SDARRAY[count]] = 1;
     printf("%u\n", bt.sqNum);
     fdmax = SDARRAY[count];
     remoteaddrudp[count] = res2->ai_addr;
