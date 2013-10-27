@@ -15,7 +15,7 @@
 int main(){
     int status, RecvR, numbytes, SendR, yes=1, numb_bytes;
     struct sockaddr_storage remoteaddr;
-    socklen_t addrlen
+    socklen_t addrlen;
     uint16_t sqNum = 0; //Max 65535    
     struct port bt;
     
