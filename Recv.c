@@ -104,8 +104,8 @@ numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr,
         exit(1);
     }
         
-        printf("%i\n", sqNumb);
-        printf("%i\n", bt.sqNum);
+        printf("%i 1 \n", sqNumb);
+        printf("%i 2 \n", bt.sqNum);
         break;
     
     }
@@ -113,7 +113,7 @@ numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr,
     }
     else{
     sqNumb++;
-    printf("%i\n", numb_bytes);
+    printf("%i 3 \n", numb_bytes);
     }
 }    //If non-sequencial open TCP and receive missing chunk
     
