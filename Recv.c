@@ -74,6 +74,7 @@ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
 } 
 
     addrlen = sizeof remoteaddr;
+    
 
 for(;;){
 

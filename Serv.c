@@ -182,6 +182,7 @@ for(;;){
                         get_in_addr(remoteaddrudp[i]),
                         ipstr, sizeof ipstr);
                         printf("sendto IP address %s\n", ipstr);
+                        
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
