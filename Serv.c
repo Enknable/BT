@@ -210,8 +210,8 @@ for(;;){
             j=(rand()%10);
             printf("%i\n", j);
                 if(j == 1)
-                SQARRAY[SD];
- [i] ++              bt.sqNum = SQARRAY[SDARRAY[i]];
+                SQARRAY[SDARRAY[i]]++;
+                bt.sqNum = SQARRAY[SDARRAY[i]];
                 
    bt.WHOAMI = SDARRAY[i];         byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
                 inet_ntop(remoteaddr.ss_family,
