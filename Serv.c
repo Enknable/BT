@@ -162,7 +162,7 @@ for(;;){
                             ACK[bt.WHOAMI] = 1;
                             printf("I'm here");
                             }else{
-                            
+                            printf("I'm HERE");
                             ACK[bt.WHOAMI] = bt.ack;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
                             //getChunk
