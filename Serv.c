@@ -157,7 +157,7 @@ for(;;){
                             
                         }
                         
-                        if(bt.sqNum != 0){
+                        if(bt.sqNum > 0){
                             if(bt.ack == 1){
                             ACK[bt.WHOAMI] = 1;
                             printf("I'm here");
