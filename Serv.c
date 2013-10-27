@@ -173,7 +173,7 @@ for(;;){
                 
             getChunk(SQARRAY[SDARRAY[j]], fp, bt.data, sz );
             
-            printf("%lu\n", sz);
+            printf("%i\n", i);
             
             //printf("%i\n", remoteaddrudp[count-1]);
             byte_count = sendto(i, "HI", 2, 0, remoteaddrudp[i], addrlenudp[i]);
