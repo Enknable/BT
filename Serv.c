@@ -144,7 +144,7 @@ for(;;){
 }else{
     sqNumb=0;
     ACK[SDARRAY[count]] = 1;
-    printf("%u\n", bt.sqNum);
+    printf("%u jokes\n", bt.sqNum);
     fdmax = SDARRAY[count];
     remoteaddrudp[count] = res2->ai_addr;
     addrlenudp[count] = res2->ai_addrlen;
@@ -157,7 +157,7 @@ for(;;){
                             
                         }else{
                         
-                        printf("%" PRId16, bt.sqNum);
+                        
                         
                         if(bt.sqNum > 0){
                             if(bt.ack == 1){
