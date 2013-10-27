@@ -32,6 +32,7 @@ struct port bt;
 time_t t;
 int SDARRAY[100];
 int WHOAMI[100];
+int ACK[100];
 uint16_t SQARRAY[100];
 int sqNumb, j=0;
 long int sz;
@@ -142,6 +143,7 @@ for(;;){
                 
 }else{
     sqNumb=0;
+    ACK[i] = 1;
     printf("%u\n", bt.sqNum);
     fdmax = SDARRAY[count];
     remoteaddrudp[count] = res2->ai_addr;
@@ -156,21 +158,24 @@ for(;;){
                         }
                         
                         if(bt.sqNum != 0){
-                            if ((status = getaddrinfo(ipstr, "5000", &hints2, &res2)) != 0) {
-                            fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
-                            exit(1);
-                            }
+                            if(bt.ack == 1){
+                            ACK[bt.WHOAMI] = 1;
+                            }else{
+                            FD_CLR(SDARRAY[bt.WHOAMI], &master);
+                            ACK[bt.WHOAMI] = bt.ack;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
-                            
+                            //getChunk
+                            sendto(SDARRAY[bt.WHOAMI], &bt, sizeof bt, 0, remoteaddrudp[bt.WHOAMI], addrlenudp[bt.WHOAMI]);
                         
                         printf("%u\n", bt.sqNum);
+                            }
             }
             }
         }
              
              
              
-             if(SDARRAY[i] != -1 && SQARRAY[SDARRAY[i]] !=-1) 
+             if(SDARRAY[i] != -1 && SQARRAY[SDARRAY[i]] !=-1 && ACK[SDARRAY[i]] == 1) 
              if(SQARRAY[SDARRAY[i]] < sz/CHUNK_SIZE)
                 FD_SET(SDARRAY[i], &master);
                 
