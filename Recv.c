@@ -38,7 +38,7 @@ int main(){
     if(RecvR == -1)
         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
     
-    for(;;){
+    
 
     //craft header, send with seq 0
     if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
@@ -46,7 +46,7 @@ int main(){
         perror("talker: sendto");
         exit(1);
     }
-}
+
     
     
     
@@ -75,12 +75,13 @@ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
 
     addrlen = sizeof remoteaddr;
 
+for(;;){
 
     numb_bytes = recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
     printf("%i\n", bt.sqNum);
     
-    //If non-sequencial open TCP and receive missing chunk
+}    //If non-sequencial open TCP and receive missing chunk
     
     
  
