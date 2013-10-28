@@ -203,7 +203,7 @@ for(;;){
             
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
                 
-            getChunk(SQARRAY[SDARRAY[j]], fp, bt.data, sz );
+            bt.data = getChunk(SQARRAY[SDARRAY[i]], fp, &bt.data, sz );
             
             printf("%i\n", i);
             
@@ -211,6 +211,7 @@ for(;;){
             
             
             
+        
             j=(rand()%10);
             printf("%i\n", j);
                 if(j == 1)
