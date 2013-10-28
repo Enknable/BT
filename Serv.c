@@ -169,7 +169,7 @@ for(;;){
                                 printf("%i imhere and should be zero\n", bt.WHOAMI);
                             ACK[bt.WHOAMI] = 1;
                             //SQARRAY[bt.WHOAMI] = bt.sqNum;
-                            sleep(5);
+                            
                             
                             }else{
                             printf("%i ack \n", bt.ack);
@@ -183,6 +183,7 @@ for(;;){
                             ACK[bt.WHOAMI] = bt.ack;
                             //getChunk
                             sendto(SDARRAY[bt.WHOAMI], &bt, sizeof bt, 0, res2->ai_addr , res2->ai_addrlen);
+                            sleep(5);
                             FD_CLR(SDARRAY[bt.WHOAMI], &master);
                         printf("%u\n", bt.sqNum);
                             }
