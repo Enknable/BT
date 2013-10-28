@@ -93,8 +93,11 @@ for(;;){
     //printf("%i z \n", bt.sqNum);
     
     
-    if(bt.sz  / CHUNK_SIZE == bt.sqNum)
+    if(bt.sz  / CHUNK_SIZE == bt.sqNum){
+    printf("EOF");
     exit(1);
+        
+    }
     
     
     if(bt.sqNum != sqNumb){
