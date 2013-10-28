@@ -218,6 +218,8 @@ for(;;){
                 SQARRAY[SDARRAY[i]]++;
                 bt.sqNum = SQARRAY[SDARRAY[i]];
             
+            if(sz / CHUNK_SIZE < SQARRAY[SDARRAY[i]])
+            bt.sz=-1;
             bt.sz=sz;    
             bt.WHOAMI = SDARRAY[i];
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);

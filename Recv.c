@@ -93,7 +93,7 @@ for(;;){
     //printf("%i z \n", bt.sqNum);
     
     
-    if(bt.sz  / CHUNK_SIZE < bt.sqNum){
+    if(bt.sz==-1){
     printf("EOF");
     exit(1);
         
