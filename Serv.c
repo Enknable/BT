@@ -217,7 +217,8 @@ for(;;){
                 if(j == 1)
                 SQARRAY[SDARRAY[i]]++;
                 bt.sqNum = SQARRAY[SDARRAY[i]];
-                
+            
+            bt.sz=sz;    
             bt.WHOAMI = SDARRAY[i];
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
                 inet_ntop(remoteaddr.ss_family,
