@@ -87,8 +87,10 @@ for(;;){
 
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
-    printf("%i q \n", sqNumb);
-    printf("%i z \n", bt.sqNum);
+    //printf("%i q \n", sqNumb);
+    //printf("%i z \n", bt.sqNum);
+    
+    printf("%s", bt.data);
     
     if(bt.sqNum != sqNumb){
         printf("dropped packet");
@@ -117,8 +119,8 @@ numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr,
         perror("talker: sendto");
         exit(1);
     }
-        printf("%i 1 \n", sqNumb);
-        printf("%i 2 \n", bt.sqNum);
+       // printf("%i 1 \n", sqNumb);
+    //    printf("%i 2 \n", bt.sqNum);
         sqNumb++;
         break;
     
