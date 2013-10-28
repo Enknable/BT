@@ -92,14 +92,6 @@ for(;;){
     printf("%i q \n", sqNumb);
     //printf("%i z \n", bt.sqNum);
     
-    
-    if(bt.data == EOF){
-    printf("EOF");
-    exit(1);
-        
-    }
-    
-    
     if(bt.sqNum != sqNumb){
         printf("dropped packet");
         bt.sqNum = sqNumb;
