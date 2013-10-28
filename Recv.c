@@ -89,11 +89,11 @@ for(;;){
 
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
-    //printf("%i q \n", sqNumb);
+    printf("%i q \n", sqNumb);
     //printf("%i z \n", bt.sqNum);
     
     
-    if(bt.sz==-1){
+    if(bt.sqNum == bt.sz / CHUNK_SIZE){
     printf("EOF");
     exit(1);
         
