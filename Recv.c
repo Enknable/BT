@@ -92,7 +92,10 @@ for(;;){
     //printf("%i q \n", sqNumb);
     //printf("%i z \n", bt.sqNum);
     
-    printf("%s", bt.data);
+    
+    if(bt.sz  / CHUNK_SIZE == bt.sqNum)
+    exit(1);
+    
     
     if(bt.sqNum != sqNumb){
         printf("dropped packet");
@@ -131,8 +134,8 @@ numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr,
     }
     else{
         sqNumb++;
-        if(bt.sz  / CHUNK_SIZE == bt.sqNum)
-        exit(1);
+        printf("%s", bt.data);
+
     //printf("%i 3 \n", numb_bytes);
     }
 }    //If non-sequencial open TCP and receive missing chunk
