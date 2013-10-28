@@ -103,6 +103,11 @@ for(;;){
         numb_bytes=0;
 numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     if(bt.sqNum != sqNumb){
+        if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
+             res->ai_addr, res->ai_addrlen)) == -1) {
+        perror("talker: sendto");
+        exit(1);
+    }
         printf("nope");
     continue;
     }else{
