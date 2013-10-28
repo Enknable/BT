@@ -113,6 +113,7 @@ for(;;){
 
     // run through the existing connections looking for data to read
     for(i = 0; i <= fdmax; i++) {
+        bt.sqNum=0;
         if (FD_ISSET(i, &read_fds)) { // we got one!!
             if (i == SendR) {
                 // handle new connections
