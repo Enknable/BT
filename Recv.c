@@ -95,7 +95,7 @@ for(;;){
     printf("%s", bt.data);
     
     if(bt.sqNum != sqNumb){
-        //printf("dropped packet");
+        printf("dropped packet");
         bt.sqNum = sqNumb;
         bt.ack=0;
          if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
