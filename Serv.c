@@ -166,9 +166,9 @@ for(;;){
                 
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
-                                printf("imhere");
+                                printf("%i imhere and should be zero\n", bt.WHOAMI);
                             ACK[bt.WHOAMI] = 1;
-                            SQARRAY[bt.WHOAMI] = bt.sqNum;
+                            //SQARRAY[bt.WHOAMI] = bt.sqNum;
                             sleep(5);
                             
                             }else{
@@ -216,7 +216,7 @@ for(;;){
                 SQARRAY[SDARRAY[i]]++;
                 bt.sqNum = SQARRAY[SDARRAY[i]];
                 
-            bt.WHOAMI = SDARRAY[i];        
+            bt.WHOAMI = SDARRAY[i];
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
                 inet_ntop(remoteaddr.ss_family,
                         get_in_addr(remoteaddrudp[i]),
