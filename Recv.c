@@ -101,9 +101,9 @@ for(;;){
         bt.ack=0;
          if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
              res->ai_addr, res->ai_addrlen)) == -1) {
-            sleep(1);
+            sleep(5);
         perror("talker: sendto");
-        exit(1);
+        exit(5\1);
     }
     for(;;){
         numb_bytes=0;
@@ -113,7 +113,7 @@ for(;;){
              res->ai_addr, res->ai_addrlen)) == -1) {
         perror("talker: sendto");
         exit(1);
-        sleep(1);
+        sleep(10);
     }
         printf("nope");
     continue;
