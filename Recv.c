@@ -15,7 +15,7 @@
 #define CHUNK_SIZE 1
 
 int main(){
-    int status, RecvR, numbytes, SendR, yes=1, numb_bytes;
+    int status, RecvR, numbytes, SendR, yes=1, numb_bytes, data_bytes = 0;
     struct sockaddr_storage remoteaddr;
     socklen_t addrlen;
     uint16_t sqNumb = 0; //Max 65535    
@@ -88,6 +88,10 @@ for(;;){
 
 
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
+    
+    
+    data_bytes += sizeof(bt.data);
+    if(bt.sz <= data_bytes;
     
     printf("%i q \n", sqNumb);
     //printf("%i z \n", bt.sqNum);
