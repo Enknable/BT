@@ -34,7 +34,7 @@ int SDARRAY[100];
 int WHOAMI[100];
 int ACK[100];
 uint16_t SQARRAY[100];
-int sqNumb, j=0, numb_bytes;
+int sqNumb, j=0, numb_bytes = 0;
 long int sz;
 FILE * fp;
 int status, SendR,  yes=1, fdmax, newfd, i, count = 0, TempR;
