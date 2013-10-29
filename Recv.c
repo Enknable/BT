@@ -124,7 +124,6 @@ for(;;){
     }
        // printf("%i 1 \n", sqNumb);
     //    printf("%i 2 \n", bt.sqNum);
-        sqNumb++;
         break;
     
     }

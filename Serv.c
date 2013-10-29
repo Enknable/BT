@@ -170,7 +170,7 @@ for(;;){
                             if(bt.ack == 1){
                                 printf("%i imhere and should be zero\n", bt.WHOAMI);
                             ACK[bt.WHOAMI] = 1;
-                            //SQARRAY[bt.WHOAMI] = bt.sqNum;
+                            SQARRAY[bt.WHOAMI] = bt.sqNum;
                             sleep(1);
                             
                             }else{
