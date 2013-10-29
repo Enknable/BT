@@ -131,9 +131,9 @@ for(;;){
     else{
         sqNumb++;
         printf("%s", bt.data);
-        data_bytes += numb_bytes - 20;
-    if(bt.sz*1000 <= data_bytes)
-    exit(1);
+      //  data_bytes += numb_bytes - 20;
+    //if(bt.sz*1000 <= data_bytes)
+    //exit(1);
     //printf("%i 3 \n", numb_bytes);
     }
 }    //If non-sequencial open TCP and receive missing chunk
