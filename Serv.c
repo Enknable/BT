@@ -165,7 +165,7 @@ for(;;){
                         
             
             if(bt.sqNum > 0){
-                
+                    FD_CLR(SDARRAY[bt.WHOAMI], &master);
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
                                 printf("%i imhere and should be zero\n", bt.WHOAMI);
@@ -186,7 +186,7 @@ for(;;){
                             //getChunk
                             sendto(SDARRAY[bt.WHOAMI], &bt, sizeof bt, 0, res2->ai_addr , res2->ai_addrlen);
                             sleep(1);
-                            FD_CLR(SDARRAY[bt.WHOAMI], &master);
+                            
                         printf("%u\n", bt.sqNum);
                             }
             }
