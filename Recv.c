@@ -133,7 +133,7 @@ for(;;){
         sqNumb++;
         //fprintf(fp, "%s", bt.data);
         //printf("%s", bt.data);
-        //fwrite(bt.data , 1 , sizeof(bt.data) , fp );
+        fwrite(bt.data , 1 , sizeof(bt.data) , fp );
       //  data_bytes += numb_bytes - 20;
     //if(bt.sz*1000 <= data_bytes)
     //exit(1);
