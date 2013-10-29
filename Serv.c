@@ -57,7 +57,7 @@ memset(&SDARRAY, -1, sizeof(SDARRAY));
 fp = fopen("newfile", "rb");
 memset(bt.data, 0, sizeof(bt.data));
 fseek(fp, 0L, SEEK_END);
-sz = ftell(fp);
+sz2 = sz = ftell(fp);
 fseek(fp, 0L, SEEK_SET);
 
 
@@ -205,7 +205,7 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
             
                 
-            getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz );
+            getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2 );
             sz2 = sz - 2048;
             printf("%i\n", i);
             
