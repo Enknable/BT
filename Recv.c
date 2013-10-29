@@ -93,8 +93,8 @@ for(;;){
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
     
-    //printf("%i q \n", sqNumb);
-    //printf("%i z \n", bt.sqNum);
+    printf("%i q \n", sqNumb);
+    printf("%i z \n", bt.sqNum);
     
     if(bt.sqNum != sqNumb){
         printf("dropped packet");
@@ -133,8 +133,8 @@ for(;;){
     }
     else{
         sqNumb++;
-        fprintf(fp, "%s", bt.data);
-        printf("%s", bt.data);
+        //fprintf(fp, "%s", bt.data);
+        //printf("%s", bt.data);
         //fwrite(bt.data , 1 , sizeof(bt.data) , fp );
       //  data_bytes += numb_bytes - 20;
     //if(bt.sz*1000 <= data_bytes)
