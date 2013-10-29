@@ -90,11 +90,7 @@ for(;;){
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
     
-    data_bytes += sizeof(bt.data);
-    if(bt.sz <= data_bytes)
-    exit(1);
-    
-    printf("%i q \n", sqNumb);
+    //printf("%i q \n", sqNumb);
     //printf("%i z \n", bt.sqNum);
     
     if(bt.sqNum != sqNumb){
@@ -135,7 +131,9 @@ numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr,
     else{
         sqNumb++;
         printf("%s", bt.data);
-
+        data_bytes += sizeof(bt.data);
+    if(bt.sz <= data_bytes)
+    exit(1);
     //printf("%i 3 \n", numb_bytes);
     }
 }    //If non-sequencial open TCP and receive missing chunk
