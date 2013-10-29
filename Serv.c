@@ -37,7 +37,7 @@ uint16_t SQARRAY[100];
 int sqNumb, j=0, numb_bytes = 0;
 long int sz;
 FILE * fp;
-int status, SendR,  yes=1, fdmax, newfd, i, count = 0, TempR;
+int status, SendR,  yes=1, fdmax, newfd, i, count = 0, TempR, sz2;
 struct addrinfo hints, hints2, *res, *res2;  // will point to the results
 fd_set master;    // master file descriptor list
 fd_set read_fds, write_fds;  // temp file descriptor list for select()
@@ -202,8 +202,10 @@ for(;;){
             
             
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
+            
                 
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz );
+            sz2 = sz - 2048;
             printf("%i\n", i);
             
             //printf("%i\n", remoteaddrudp[count-1]);
