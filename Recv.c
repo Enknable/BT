@@ -103,7 +103,7 @@ for(;;){
              res->ai_addr, res->ai_addrlen)) == -1) {
             sleep(5);
         perror("talker: sendto");
-        exit(5\1);
+        exit(1);
     }
     for(;;){
         numb_bytes=0;
