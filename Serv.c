@@ -37,7 +37,8 @@ uint16_t SQARRAY[100];
 int sqNumb, j=0, numb_bytes = 0;
 long int sz;
 FILE * fp;
-int status, SendR,  yes=1, fdmax, newfd, i, count = 0, TempR, sz2;
+int status, SendR,  yes=1, fdmax, newfd, i, count = 0, TempR;
+long int sz2 = 0;
 struct addrinfo hints, hints2, *res, *res2;  // will point to the results
 fd_set master;    // master file descriptor list
 fd_set read_fds, write_fds;  // temp file descriptor list for select()
