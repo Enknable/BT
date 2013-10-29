@@ -123,6 +123,7 @@ for(;;){
              res->ai_addr, res->ai_addrlen)) == -1) {
         perror("talker: sendto");
         exit(1);
+        sleep(1);
     }
        // printf("%i 1 \n", sqNumb);
     //    printf("%i 2 \n", bt.sqNum);
