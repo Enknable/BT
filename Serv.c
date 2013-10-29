@@ -222,8 +222,8 @@ for(;;){
                 
                 bt.sqNum = SQARRAY[SDARRAY[i]];
                 
-                prinft("%i sqnum\n", bt.sqNum);
-                prinft("%i sqnumarray\n", SQARRAY[SDARRAY[i]]);
+                printf("%i sqnum\n", bt.sqNum);
+                printf("%i sqnumarray\n", SQARRAY[SDARRAY[i]]);
                 
 
             bt.sz=sz;    
