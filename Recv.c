@@ -91,7 +91,8 @@ for(;;){
     
     
     data_bytes += sizeof(bt.data);
-    if(bt.sz <= data_bytes;
+    if(bt.sz <= data_bytes)
+    exit(1);
     
     printf("%i q \n", sqNumb);
     //printf("%i z \n", bt.sqNum);
