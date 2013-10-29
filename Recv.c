@@ -119,7 +119,6 @@ for(;;){
     continue;
     }else{
         bt.ack = 1;
-        bt.sqNum--;
         if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
              res->ai_addr, res->ai_addrlen)) == -1) {
         perror("talker: sendto");
