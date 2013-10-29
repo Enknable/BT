@@ -216,7 +216,7 @@ for(;;){
             
         
             j=(rand()%100);
-            //printf("%i\n", j);
+            printf("%i\n", j);
                 if(j == 1)
                 SQARRAY[SDARRAY[i]]++;
                 
