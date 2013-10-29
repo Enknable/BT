@@ -204,7 +204,7 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
                 
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz );
-            numb_bytes += bt.data;
+            numb_bytes += sizeof(bt.data);
             printf("%i\n", i);
             
             //printf("%i\n", remoteaddrudp[count-1]);
