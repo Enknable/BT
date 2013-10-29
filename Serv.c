@@ -204,7 +204,7 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
                 
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz );
-            numb_bytes += sizeof(bt.data);
+            numb_bytes
             printf("%i\n", i);
             
             //printf("%i\n", remoteaddrudp[count-1]);
@@ -221,6 +221,7 @@ for(;;){
             bt.sz=sz;    
             bt.WHOAMI = SDARRAY[i];
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
+            numb_bytes += byte_count - 20;
                 inet_ntop(remoteaddr.ss_family,
                         get_in_addr(remoteaddrudp[i]),
                         ipstr, sizeof ipstr);
