@@ -17,6 +17,5 @@ struct port {
     
 //Open file, go to sqNum*"standard-offset", read into buffer, guarantee read = write, return pointer to the buffer.
 
-
 char * getChunk(int16_t sqNum, FILE * fp, char data[2048], long int sz);
 

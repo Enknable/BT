@@ -51,11 +51,11 @@ char ipstr[INET6_ADDRSTRLEN];
 
 srand((unsigned) time(&t));
 
+
 memset(&SQARRAY, -1, sizeof(SQARRAY));
 memset(&SDARRAY, -1, sizeof(SDARRAY));
 
 fp = fopen("newfile", "rb");
-setbuf(fp, NULL);
 memset(bt.data, 0, sizeof(bt.data));
 fseek(fp, 0L, SEEK_END);
 sz2 = sz = ftell(fp);

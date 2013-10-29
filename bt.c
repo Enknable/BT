@@ -13,6 +13,7 @@ char * getChunk(uint16_t sqNum, FILE * fp, char data[2048], long int sz){
     
     lseek(fp, sqNum*CHUNK_SIZE, SEEK_SET);
     
+    
     if(sz < 2048){
         fread(data, sizeof(char), sz, fp);
     }

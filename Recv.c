@@ -22,6 +22,7 @@ int main(){
     struct port bt;
     FILE * fp;
     
+    
     fp = fopen("newfile.txt", "a");
     setbuf(fp, NULL);
     struct addrinfo hints, *res, hints2, *res2;  // will point to the results
