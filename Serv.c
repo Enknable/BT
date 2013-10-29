@@ -221,6 +221,10 @@ for(;;){
                 SQARRAY[SDARRAY[i]]++;
                 
                 bt.sqNum = SQARRAY[SDARRAY[i]];
+                
+                prinft("%i sqnum\n", bt.sqNum);
+                prinft("%i sqnumarray\n", SQARRAY[SDARRAY[i]]);
+                
 
             bt.sz=sz;    
             bt.WHOAMI = SDARRAY[i];
