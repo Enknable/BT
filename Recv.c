@@ -77,7 +77,6 @@ if(bind(SendR, res2->ai_addr, res2->ai_addrlen) == -1)
     fprintf(stderr,"Bind Error: %s\n", strerror(errno));
 
 
-
 //lose the pesky "Address already in use" error message
 if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
     perror("setsockopt");
