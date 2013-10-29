@@ -126,8 +126,8 @@ for(;;){
         exit(1);
         sleep(1);
     }
-       // printf("%i 1 \n", sqNumb);
-    //    printf("%i 2 \n", bt.sqNum);
+        printf("%i 1 \n", sqNumb);
+        printf("%i 2 \n", bt.sqNum);
         break;
     
     }
