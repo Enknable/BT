@@ -138,7 +138,8 @@ numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr,
     }
 }    //If non-sequencial open TCP and receive missing chunk
     
-
+freeaddrinfo(res); // free the linked-list
+freeaddrinfo(res2);
  
     return 0;
 }
