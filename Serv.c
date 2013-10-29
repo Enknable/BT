@@ -34,7 +34,7 @@ int SDARRAY[100];
 int WHOAMI[100];
 int ACK[100];
 uint16_t SQARRAY[100];
-int sqNumb, j=0;
+int sqNumb, j=0, numb_bytes;
 long int sz;
 FILE * fp;
 int status, SendR,  yes=1, fdmax, newfd, i, count = 0, TempR;
@@ -204,7 +204,7 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
                 
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz );
-            
+            numb_bytes += bt.data;
             printf("%i\n", i);
             
             //printf("%i\n", remoteaddrudp[count-1]);
@@ -237,7 +237,7 @@ for(;;){
                     printf("%i\n", SQARRAY[SDARRAY[i]]);
                     
                     
-                    if(sz/CHUNK_SIZE < SQARRAY[SDARRAY[i]])
+                    if(sz <= numb_bytes)
                 FD_CLR(SDARRAY[i], &master);
     }
         
