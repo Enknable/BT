@@ -22,7 +22,7 @@ int main(){
     struct port bt;
     FILE * fp;
     
-    fp = fopen("newfile", "a");
+    fp = fopen("newfile.txt", "a");
     
     struct addrinfo hints, *res, hints2, *res2;  // will point to the results
     bt.sqNum = sqNumb;
