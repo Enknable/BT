@@ -216,9 +216,6 @@ for(;;){
             printf("%i\n", i);
             
             //printf("%i\n", remoteaddrudp[count-1]);
-            
-            
-            
         
             //j=(rand()%1000);
             //printf("%i\n", j);
