@@ -213,7 +213,7 @@ for(;;){
             
             memset(bt.data, 0, sizeof(bt.data));
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2 );
-            memcpy(&str, bt.data, sizeof(bt.data));
+            memcpy(&str, bt.data, 5;
             md5Start(&md);
             md5Add(&md, str, sizeof(str)-1);
             md5End(&md, digest);
