@@ -217,9 +217,7 @@ for(;;){
             md5Start(&md);
             md5Add(&md, str, 5);
             md5End(&md, digest);
-            for(i=0; i<MD5_SZ;i++){
-            sprintf (&bt.md5[i],"%02x", digest[i]);
-            }
+            memcpy(&bt.md5, digest, sizeof(digest));
             
             if(sz2 < 2048){
                 sz2=0;
