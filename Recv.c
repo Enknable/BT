@@ -98,9 +98,9 @@ for(;;){
 
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
-    memcpy(&str, bt.data, 5);
+    memcpy(&str, bt.data, strlen(bt.data));
     md5Start(&md);
-    md5Add(&md, str, 5);
+    md5Add(&md, str, strlen(str));
     md5End(&md, digest);
     
     
