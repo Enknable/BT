@@ -33,7 +33,7 @@ time_t t;
 int SDARRAY[100];
 int WHOAMI[100];
 int ACK[100];
-uint16_t SQARRAY[100];
+uint32_t SQARRAY[100];
 int  j=0, numb_bytes = 0;
 uint32_t sqNumb;
 long int sz;
