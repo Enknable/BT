@@ -17,7 +17,7 @@ struct port {
     
     uint32_t sqNum;
     uint16_t length;
-    char md5[16];
+    char md5[32];
     char data[2048];
     int WHOAMI;
     int ack;
