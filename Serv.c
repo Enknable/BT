@@ -214,9 +214,9 @@ for(;;){
             memset(bt.data, 0, sizeof(bt.data));
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2 );
             memcpy(&str, bt.data, 5);
-            //md5Start(&md);
-            //md5Add(&md, str, sizeof(str)-1);
-            //md5End(&md, digest);
+            md5Start(&md);
+            md5Add(&md, str, 5;
+            md5End(&md, digest);
             //for(i=0; i<MD5_SZ;i++){
             //sprintf (&bt.md5[i],"%02x", digest[i]);
             //}
