@@ -98,11 +98,17 @@ for(;;){
 
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
+    memcpy(&str, bt.data, 5);
+    md5Start(&md);
+    md5Add(&md, str, 5);
+    md5End(&md, digest);
+    
+    
     
     printf("%i q \n", sqNumb);
     printf("%i z \n", bt.sqNum);
     
-    if(bt.sqNum != sqNumb){
+    if(bt.sqNum != sqNumb && bt.md5 != digest){
         printf("dropped packet");
         bt.sqNum = sqNumb;
         bt.ack=0;
@@ -143,9 +149,8 @@ for(;;){
     }
     else{
         sqNumb++;
-        for(i=0; i<MD5_SZ;i++){
- fprintf(fp, "%02x", bt.md5[i]);
-}
+         fprintf(fp, "s", bt.data);
+
         
         //printf("%s", bt.data);
         //fwrite(bt.data , 1 , sizeof(bt.data) , fp );
