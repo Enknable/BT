@@ -216,10 +216,10 @@ for(;;){
             
             
         
-            j=(rand()%1000);
-            printf("%i\n", j);
-                if(j == 1)
-                SQARRAY[SDARRAY[i]]++;
+            //j=(rand()%1000);
+            //printf("%i\n", j);
+               // if(j == 1)
+                //SQARRAY[SDARRAY[i]]++;
                 
                 bt.sqNum = SQARRAY[SDARRAY[i]];
                 
