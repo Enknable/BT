@@ -256,6 +256,7 @@ for(;;){
                 SQARRAY[SDARRAY[i]]++;
                     
                     
+                
                     printf("%i\n", SQARRAY[SDARRAY[i]]);
                     
                     
