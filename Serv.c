@@ -206,7 +206,7 @@ for(;;){
             
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
             
-              
+            memset(bt.data, 0, sizeof(bt.data));
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2 );
             if(sz2 < 2048){
                 sz2=0;
