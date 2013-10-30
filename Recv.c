@@ -149,7 +149,7 @@ for(;;){
     }
     else{
         sqNumb++;
-         fprintf(fp, "s", bt.data);
+         fprintf(fp, "%s", bt.data);
 
         
         //printf("%s", bt.data);
