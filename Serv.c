@@ -206,9 +206,9 @@ for(;;){
             
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
             
-                
+            sz2 = sz - 2048;    
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2 );
-            sz2 = sz - 2048;
+            
             printf("%i\n", i);
             
             //printf("%i\n", remoteaddrudp[count-1]);
@@ -245,7 +245,7 @@ for(;;){
                     printf("%i\n", SQARRAY[SDARRAY[i]]);
                     
                     
-                    if(sz / CHUNK_SIZE < SQARRAY[SDARRAY[i]]);
+                    if(sz2 % CHUNK_SIZE < 1);
                 FD_CLR(SDARRAY[i], &master);
     }
         
