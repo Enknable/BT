@@ -18,7 +18,7 @@ int main(){
     int status, RecvR, numbytes, SendR, yes=1, numb_bytes, data_bytes = 0;
     struct sockaddr_storage remoteaddr;
     socklen_t addrlen;
-    uint16_t sqNumb = 0; //Max 65535    
+    uint32_t sqNumb = 0; //Max 65535    
     struct port bt;
     FILE * fp;
     
