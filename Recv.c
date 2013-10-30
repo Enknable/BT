@@ -21,6 +21,7 @@ int main(){
     int status, RecvR, numbytes, SendR, yes=1, numb_bytes, data_bytes = 0;
     struct sockaddr_storage remoteaddr;
     struct md5CTX md;
+    int i;
     byte_t digest[MD5_SZ];
     byte_t str[2048];
     socklen_t addrlen;
