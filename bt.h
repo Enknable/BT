@@ -9,6 +9,7 @@
  * The number of bytes output in a MD5 hash, and the internal block size of
  * MD5
  */
+#define MD5_SZ (128 / 8)
 #define MD5_DIGEST_BYTES (16)
 #define MD5_BLOCK_BYTES  (64)
 //Protocol guaranteeing a sequence number, length, md5 checksum and 448 bits for data.
@@ -17,7 +18,7 @@ struct port {
     
     uint32_t sqNum;
     uint16_t length;
-    char md5[32];
+    byte_t md5[MD5_SZ];
     char data[2048];
     int WHOAMI;
     int ack;
