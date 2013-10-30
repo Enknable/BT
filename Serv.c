@@ -9,9 +9,11 @@
 #include <stdlib.h>
 #include <errno.h>
 #include "bt.h"
+#include "common.h"
 #include <inttypes.h>
 
 #define CHUNK_SIZE 2048
+#define MD5_SZ (128 / 8)
 
 
 // get sockaddr, IPv4 or IPv6:
@@ -30,6 +32,9 @@ int main( int argc, char *argv[])
 
 struct port bt;
 time_t t;
+struct md5CTX md;
+byte_t digest[MD5_SZ];
+byte_t str[2048];
 int SDARRAY[100];
 int WHOAMI[100];
 int ACK[100];
@@ -208,6 +213,14 @@ for(;;){
             
             memset(bt.data, 0, sizeof(bt.data));
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2 );
+            memcpy(&str, bt.data, sizeof(bt.data));
+            md5Start(&md);
+            md5Add(&md, str, sizeof(str)-1);
+            md5End(&md, digest);
+            for(i=0; i<MD5_SZ;i++){
+            sprintf (&bt.md5[i],"%02x", digest[i]);
+            }
+            
             if(sz2 < 2048){
                 sz2=0;
             }else{

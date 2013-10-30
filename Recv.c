@@ -10,13 +10,19 @@
 #include <stdlib.h>
 #include <errno.h>
 #include "bt.h"
+#include "common.h"
 #include <inttypes.h>
 
 #define CHUNK_SIZE 2048
+#define MD5_SZ (128 / 8)
+
 
 int main(){
     int status, RecvR, numbytes, SendR, yes=1, numb_bytes, data_bytes = 0;
     struct sockaddr_storage remoteaddr;
+    struct md5CTX md;
+    byte_t digest[MD5_SZ];
+    byte_t str[2048];
     socklen_t addrlen;
     uint32_t sqNumb = 0; //Max 65535    
     struct port bt;
@@ -136,7 +142,7 @@ for(;;){
     }
     else{
         sqNumb++;
-        fprintf(fp, "%s", bt.data);
+        fprintf(fp, "%s", bt.md5);
         //printf("%s", bt.data);
         //fwrite(bt.data , 1 , sizeof(bt.data) , fp );
       //  data_bytes += numb_bytes - 20;
