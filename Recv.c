@@ -142,7 +142,7 @@ for(;;){
     }
     else{
         sqNumb++;
-        fprintf(fp, "%s", bt.md5);
+        fprintf(fp, "%02x", bt.md5);
         //printf("%s", bt.data);
         //fwrite(bt.data , 1 , sizeof(bt.data) , fp );
       //  data_bytes += numb_bytes - 20;
