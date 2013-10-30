@@ -142,7 +142,10 @@ for(;;){
     }
     else{
         sqNumb++;
-        fprintf(fp, "%02x", bt.md5);
+        for(i=0; i<MD5_SZ;i++){
+ fprintf(fp, "%02x", bt.md5[i]);
+}
+        
         //printf("%s", bt.data);
         //fwrite(bt.data , 1 , sizeof(bt.data) , fp );
       //  data_bytes += numb_bytes - 20;
