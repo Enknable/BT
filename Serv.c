@@ -213,13 +213,13 @@ for(;;){
             
             memset(bt.data, 0, sizeof(bt.data));
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2 );
-            memcpy(&str, bt.data, 5);
-            md5Start(&md);
-            md5Add(&md, str, sizeof(str)-1);
-            md5End(&md, digest);
-            for(i=0; i<MD5_SZ;i++){
-            sprintf (&bt.md5[i],"%02x", digest[i]);
-            }
+            //memcpy(&str, bt.data, 5);
+            //md5Start(&md);
+            //md5Add(&md, str, sizeof(str)-1);
+            //md5End(&md, digest);
+            //for(i=0; i<MD5_SZ;i++){
+            //sprintf (&bt.md5[i],"%02x", digest[i]);
+            //}
             
             if(sz2 < 2048){
                 sz2=0;
@@ -245,10 +245,10 @@ for(;;){
             bt.WHOAMI = SDARRAY[i];
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
             numb_bytes += byte_count - 20;
-                //inet_ntop(remoteaddr.ss_family,
-                  //      get_in_addr(remoteaddrudp[i]),
-                    //    ipstr, sizeof ipstr);
-                      //  printf("sendto IP address %s\n", ipstr);
+                inet_ntop(remoteaddr.ss_family,
+                        get_in_addr(remoteaddrudp[i]),
+                        ipstr, sizeof ipstr);
+                        printf("sendto IP address %s\n", ipstr);
                         
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
