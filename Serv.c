@@ -245,10 +245,10 @@ for(;;){
             bt.WHOAMI = SDARRAY[i];
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
             numb_bytes += byte_count - 20;
-                inet_ntop(remoteaddr.ss_family,
-                        get_in_addr(remoteaddrudp[i]),
-                        ipstr, sizeof ipstr);
-                        printf("sendto IP address %s\n", ipstr);
+                //inet_ntop(remoteaddr.ss_family,
+                  //      get_in_addr(remoteaddrudp[i]),
+                    //    ipstr, sizeof ipstr);
+                      //  printf("sendto IP address %s\n", ipstr);
                         
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
