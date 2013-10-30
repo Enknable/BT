@@ -245,7 +245,7 @@ for(;;){
                     printf("%i\n", SQARRAY[SDARRAY[i]]);
                     
                     
-                    if(sz2 <= 0)
+                    if(sz / CHUNK_SIZE < SQARRAY[SDARRAY[i]]);
                 FD_CLR(SDARRAY[i], &master);
     }
         
