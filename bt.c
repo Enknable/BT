@@ -5,7 +5,7 @@
 #include <string.h>
 #include <inttypes.h>
 
-#define CHUNK_SIZE 1
+#define CHUNK_SIZE 2048
 
 char * getChunk(uint32_t sqNum, FILE * fp, char data[2048], long int sz){
     

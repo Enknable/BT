@@ -12,7 +12,7 @@
 #include "bt.h"
 #include <inttypes.h>
 
-#define CHUNK_SIZE 1
+#define CHUNK_SIZE 2048
 
 int main(){
     int status, RecvR, numbytes, SendR, yes=1, numb_bytes, data_bytes = 0;
