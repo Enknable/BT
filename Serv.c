@@ -209,7 +209,7 @@ for(;;){
               
             getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2 );
             if(sz2 < 2048){
-                sz2=0
+                sz2=0;
             }else{
             sz2 = sz - 2048; 
             }
