@@ -54,6 +54,8 @@ struct sockaddr *remoteaddrudp[100];// client address
 socklen_t addrlen, addrlenudp[100];
 int byte_count;
 char ipstr[INET6_ADDRSTRLEN];
+int broadcast = 1;
+//char broadcast = '1'; // if that doesn't work, try this
 
 srand((unsigned) time(&t));
 
@@ -95,12 +97,16 @@ if(bind(SendR, res->ai_addr, res->ai_addrlen) == -1)
     fprintf(stderr,"Bind Error: %s\n", strerror(errno));
 
 
-
+if (setsockopt(SendR, SOL_SOCKET, SO_BROADCAST, &broadcast,
+		sizeof broadcast) == -1) {
+		perror("setsockopt (SO_BROADCAST)");
+		exit(1);
+	}
 //lose the pesky "Address already in use" error message
-if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
-    perror("setsockopt");
-    exit(1);
-} 
+//if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
+  //  perror("setsockopt");
+    //exit(1);
+//} 
 
 // add the listener to the master set
     FD_SET(SendR, &master);
