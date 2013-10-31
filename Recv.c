@@ -28,6 +28,8 @@ int main(){
     uint32_t sqNumb = 0; //Max 65535    
     struct port bt;
     FILE * fp;
+    int broadcast = 1;
+	//char broadcast = '1'; // if that doesn't work, try this
     
     
     fp = fopen("newfile.txt", "a");
@@ -56,6 +58,11 @@ int main(){
     if(RecvR == -1)
         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
     
+    if (setsockopt(RecvR, SOL_SOCKET, SO_BROADCAST, &broadcast,
+		sizeof broadcast) == -1) {
+		perror("setsockopt (SO_BROADCAST)");
+		exit(1);
+	}
     
     //craft header, send with seq 0
     bt.ack=0;
