@@ -95,7 +95,7 @@ if(bind(SendR, res2->ai_addr, res2->ai_addrlen) == -1)
 if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
     perror("setsockopt");
     exit(1);
-
+}
 //if (setsockopt(SendR, SOL_SOCKET, SO_BROADCAST, &broadcast,
 //		sizeof broadcast) == -1) {
 //		perror("setsockopt (SO_BROADCAST)");
