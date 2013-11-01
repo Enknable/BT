@@ -78,7 +78,7 @@ int main(){
     
     
     //select recvfrom/check seq # of received packets
-    if ((status = getaddrinfo("192.168.1.255", "5000", &hints2, &res2)) != 0) {
+    if ((status = getaddrinfo("192.168.1.77", "5000", &hints2, &res2)) != 0) {
     fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
     exit(1);
 }
