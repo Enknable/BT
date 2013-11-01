@@ -166,6 +166,7 @@ for(;;){
     perror("setsockopt");
     exit(1);
 	}       
+	
 }else{
     sqNumb=0;
     ACK[SDARRAY[count]] = 1;
