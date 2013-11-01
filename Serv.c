@@ -165,7 +165,7 @@ for(;;){
 	if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
     perror("setsockopt");
     exit(1);
-                
+	}       
 }else{
     sqNumb=0;
     ACK[SDARRAY[count]] = 1;
