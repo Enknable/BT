@@ -97,11 +97,12 @@ if(bind(SendR, res->ai_addr, res->ai_addrlen) == -1)
     fprintf(stderr,"Bind Error: %s\n", strerror(errno));
 
 
-if (setsockopt(SendR, SOL_SOCKET, SO_BROADCAST, &broadcast,
-		sizeof broadcast) == -1) {
-		perror("setsockopt (SO_BROADCAST)");
-		exit(1);
-	}
+
+ if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
+    perror("setsockopt");
+    exit(1);
+} 
+
 //lose the pesky "Address already in use" error message
 //if (setsockopt(SendR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
   //  perror("setsockopt");
@@ -155,6 +156,15 @@ for(;;){
                     SDARRAY[count]=socket(res2->ai_family, res2->ai_socktype, res2->ai_protocol);
                         if(SDARRAY[count] == -1){
                         fprintf(stderr, "Socket Error: %s\n", strerror(errno));
+                        
+      //                  if (setsockopt(SDARRAY[count], SOL_SOCKET, SO_BROADCAST, &broadcast,
+	//	sizeof broadcast) == -1) {
+	//	perror("setsockopt (SO_BROADCAST)");
+	//	exit(1);
+	//}
+	if (setsockopt(RecvR,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int)) == -1) {
+    perror("setsockopt");
+    exit(1);
                 
 }else{
     sqNumb=0;
