@@ -147,11 +147,7 @@ for(;;){
         perror("talker: sendto");
         exit(1);
     }
-    for(;;){
-        recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr*) &remoteaddr, &addrlen);
-        if(bt.sqNum != sqNumb)
-        break;
-    }
+    sleep(1);
     for(;;){
         numb_bytes=0;
  recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
