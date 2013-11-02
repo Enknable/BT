@@ -45,7 +45,7 @@ long int sz;
 FILE * fp;
 FILE * fp2;
 long int szread=0;
-int status, SendR,  yes=1, fdmax, newfd, i,q, count = 0, TempR;
+int status, SendR,  yes=1, fdmax, newfd, i,q, count = 0, TempR, BeeN;
 long int sz2 = 0;
 struct addrinfo hints, hints2, *res, *res2;  // will point to the results
 fd_set master;    // master file descriptor list
@@ -173,6 +173,7 @@ for(;;){
 	}       
 	
 }else{
+    BeeN=0;
     sqNumb=0;
     ACK[SDARRAY[count]] = 1;
     printf("%u jokes\n", bt.sqNum);
@@ -213,6 +214,7 @@ for(;;){
                             printf("I'm HERE");
                             ACK[bt.WHOAMI] = bt.ack;
                             //getChunk
+                            BeeN=1;
                             sendto(bt.WHOAMI, &bt, sizeof bt, 0, res2->ai_addr , res2->ai_addrlen);
                             sleep(1);
                             
@@ -285,6 +287,11 @@ for(;;){
             if(byte_count==0)
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
+                
+                if(BeeN == 1){
+                SQARRAY[SDARRAY[i]]--;
+                BeeN = 0;
+                }
                 SQARRAY[SDARRAY[i]]++;
                     
                     
