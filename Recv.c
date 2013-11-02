@@ -120,9 +120,9 @@ for(;;){
     
     for (q=0;q<16;q++){
                 sprintf(buf1, "%02x", bt.md5[i]);
-    result.append( buf1 );
+    buf1.append( buf1 );
                 sprintf(buf2, "%02x", digest[i]);
-    result.append( buf2 );
+    buf2.append( buf2 );
                      }
     
 
