@@ -56,7 +56,7 @@ int byte_count;
 char ipstr[INET6_ADDRSTRLEN];
 int broadcast = 1;
 //char broadcast = '1'; // if that doesn't work, try this
-
+setbuf(fp, NULL);
 srand((unsigned) time(&t));
 
 
@@ -229,7 +229,7 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
             
             memset(bt.data, 0, sizeof(bt.data));
-            getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2 );
+            getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2);
             memcpy(&str, bt.data, strlen(bt.data));
             md5Start(&md);
             md5Add(&md, str, strlen(str));
@@ -244,13 +244,14 @@ for(;;){
                      }
             
             
-            
+            //!!!!!!!This needs to be set for each socket!
             if(sz2 < 2048){
                 sz2=0;
             }else{
             sz2 = sz - 2048; 
             }
             printf("%i\n", i);
+            //!!!!!!!
             
             //printf("%i\n", remoteaddrudp[count-1]);
         
