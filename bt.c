@@ -44,7 +44,7 @@ long int getChunk(uint32_t sqNum, FILE * fp, byte_t data[2048], long int sz){
     
     
     if(sz <= 2048){
-        sz = fread(data, sizeof(char), sz, fp);
+        sz = fread(data, sizeof(char), sz, fp) ;
     }
     
         else{
