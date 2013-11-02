@@ -112,9 +112,9 @@ for(;;){
 
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
-    memcpy(&str, bt.data, strlen(bt.data));
+    memcpy(&str, bt.data, sizeof(bt.data));
     md5Start(&md);
-    md5Add(&md, str, strlen(str));
+    md5Add(&md, str, sizeof(str));
     md5End(&md, digest);
     
     for (q=0;q<16;q++){
@@ -173,7 +173,7 @@ for(;;){
 
 
         //printf("%s", bt.data);
-        fwrite(bt.data , 1 , strlen(bt.data)-1 , fp );
+        fwrite(bt.data , 1 , strlen(bt.data) , fp );
       //  data_bytes += numb_bytes - 20;
     //if(bt.sz*1000 <= data_bytes)
     //exit(1);
