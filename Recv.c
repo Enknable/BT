@@ -24,6 +24,7 @@ int main(){
     int i,q;
     byte_t digest[MD5_SZ];
     byte_t str[2048];
+    char buf1[32], buf2[32];
     socklen_t addrlen;
     uint32_t sqNumb = 0; //Max 65535    
     struct port bt;
@@ -118,17 +119,17 @@ for(;;){
     md5End(&md, digest);
     
     for (q=0;q<16;q++){
-                printf("%02x", bt.md5[q]);
-                     }
-                     for (q=0;q<16;q++){
-                printf("%02x", digest[q]);
+                sprintf(buf1, "%02x", bt.md5[i]);
+    result.append( buf1 );
+                sprintf(buf2, "%02x", digest[i]);
+    result.append( buf2 );
                      }
     
 
     printf("%i q \n", sqNumb);
     printf("%i z \n", bt.sqNum);
     
-    if(bt.sqNum != sqNumb || bt.md5 != digest){
+    if(bt.sqNum != sqNumb || buf1 != buf2){
         printf("dropped packet");
         bt.sqNum = sqNumb;
         bt.ack=0;
