@@ -118,6 +118,9 @@ for(;;){
     md5Add(&md, str, sizeof(str));
     md5End(&md, digest);
     
+    printf("%s\n", bt.data);
+    
+    
     for (q=0;q<16;q++){
                 sprintf(buf1+(2*q), "%02x", bt.md5[q]);
                      }
