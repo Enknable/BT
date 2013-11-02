@@ -237,11 +237,11 @@ for(;;){
             szread = getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2);
             memcpy(&str, bt.data, szread);
             md5Start(&md);
-            md5Add(&md, str, strlen(str));
+            md5Add(&md, str, sizeof(str));
             md5End(&md, digest);
             memcpy(&bt.md5, digest, sizeof(digest));
             
-            
+            printf("s\n", bt.data);
             printf("%lu\n", szread);
             fwrite(bt.data , 1 , szread , fp2);
             for (q=0;q<16;q++){
