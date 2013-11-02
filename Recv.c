@@ -21,7 +21,7 @@ int main(){
     int status, RecvR, numbytes, SendR, yes=1, numb_bytes, data_bytes = 0;
     struct sockaddr_storage remoteaddr;
     struct md5CTX md;
-    int i;
+    int i,q;
     byte_t digest[MD5_SZ];
     byte_t str[2048];
     socklen_t addrlen;
@@ -117,6 +117,9 @@ for(;;){
     md5Add(&md, str, strlen(str));
     md5End(&md, digest);
     
+    for (q=0;q<16;q++){
+                printf("%02x", bt.md5[q]);
+                     }
     
 
     printf("%i q \n", sqNumb);
