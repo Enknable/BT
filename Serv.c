@@ -213,7 +213,7 @@ for(;;){
                             printf("I'm HERE");
                             ACK[bt.WHOAMI] = bt.ack;
                             //getChunk
-                            sendto(SDARRAY[bt.WHOAMI], &bt, sizeof bt, 0, res2->ai_addr , res2->ai_addrlen);
+                            sendto(bt.WHOAMI, &bt, sizeof bt, 0, res2->ai_addr , res2->ai_addrlen);
                             sleep(1);
                             
                         printf("%u\n", bt.sqNum);
