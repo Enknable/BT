@@ -200,7 +200,6 @@ for(;;){
                                 printf("%i imhere and should be zero\n", bt.WHOAMI);
                             ACK[bt.WHOAMI] = 1;
                             BeeN=1;
-                            sz2 = bt.length + sz2;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
                             printf("%i WHO?\n", SQARRAY[bt.WHOAMI]);
                    
