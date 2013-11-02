@@ -238,7 +238,7 @@ for(;;){
             
             memset(bt.data, 0, sizeof(bt.data));
             
-            printf("%lu szread\n", SQARRAY[SDARRAY[i]]);
+            printf("%lu sqNum\n", SQARRAY[SDARRAY[i]]);
             szread = getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz);
             
             memcpy(&str, bt.data, szread);
@@ -248,9 +248,9 @@ for(;;){
             memcpy(&bt.md5, digest, sizeof(digest));
             
             //printf("%s\n", bt.data);
-            printf("%lu\n", szread);
+            printf("%lu szread\n", szread);
             fwrite(bt.data , 1 , szread , fp2);
-            printf("%lu\n", sz2);
+            printf("%lu sz2\n", sz2);
             for (q=0;q<16;q++){
                 printf("%02x", bt.md5[q]);
                      }
