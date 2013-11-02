@@ -238,6 +238,7 @@ for(;;){
             
             memset(bt.data, 0, sizeof(bt.data));
             
+            printf("%lu szread\n", SQARRAY[SDARRAY[i]]);
             szread = getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz);
             
             memcpy(&str, bt.data, szread);
