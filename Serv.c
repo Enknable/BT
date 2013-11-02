@@ -237,6 +237,10 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
             
             memset(bt.data, 0, sizeof(bt.data));
+             if(BeeN == 1){
+                SQARRAY[SDARRAY[i]]--;
+                BeeN = 0;
+                }
             szread = getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz);
             memcpy(&str, bt.data, szread);
             md5Start(&md);
@@ -288,10 +292,7 @@ for(;;){
                 fprintf(stderr, "sendto error: %s\n", gai_strerror(byte_count));
                 
                 
-                if(BeeN == 1){
-                SQARRAY[SDARRAY[i]]--;
-                BeeN = 0;
-                }
+               
                 SQARRAY[SDARRAY[i]]++;
                     
                     
