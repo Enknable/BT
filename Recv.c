@@ -32,7 +32,7 @@ int main(){
 	//char broadcast = '1'; // if that doesn't work, try this
     
     
-    fp = fopen("newfile.txt", "a");
+    fp = fopen("newfile.txt", "ab");
     setbuf(fp, NULL);
     struct addrinfo hints, *res, hints2, *res2;  // will point to the results
     bt.sqNum = sqNumb;
