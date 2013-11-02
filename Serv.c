@@ -202,13 +202,13 @@ for(;;){
                             BeeN=1;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
                             printf("%i WHO?\n", SQARRAY[bt.WHOAMI]);
-                            sleep(1);
+                   
                             
                             }else{
                             printf("%i ack \n", bt.ack);
                             if ((status = getaddrinfo(ipstr, "5000", &hints2, &res2)) != 0) {
                             fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
-                            exit(1);
+                            
 }               
                             
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
@@ -237,9 +237,11 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
             
             memset(bt.data, 0, sizeof(bt.data));
-             
-            szread = getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz);
             
+            if(BeeN == 1){
+                SQARRAY[SDARRAY[i]]--;
+            } 
+            szread = getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz);
             
             memcpy(&str, bt.data, szread);
             md5Start(&md);
@@ -281,6 +283,8 @@ for(;;){
             bt.sz=sz;    
             bt.WHOAMI = SDARRAY[i];
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
+            if(BeeN == 1)
+            BeeN=0;
             numb_bytes += byte_count - 20;
                 inet_ntop(remoteaddr.ss_family,
                         get_in_addr(remoteaddrudp[i]),
