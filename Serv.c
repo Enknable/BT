@@ -242,7 +242,7 @@ for(;;){
             md5End(&md, digest);
             memcpy(&bt.md5, digest, sizeof(digest));
             
-            printf("%s\n", bt.data);
+            //printf("%s\n", bt.data);
             printf("%lu\n", szread);
             fwrite(bt.data , 1 , szread , fp2);
             printf("%lu\n", sz2);
