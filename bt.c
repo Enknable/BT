@@ -36,7 +36,7 @@ static const int SINE[64] =
 
 
 
-char * getChunk(uint32_t sqNum, FILE * fp, char data[2048], long int sz){
+long int getChunk(uint32_t sqNum, FILE * fp, char data[2048], long int sz){
     
     memset(data, 0, sizeof(data));
     
@@ -44,15 +44,15 @@ char * getChunk(uint32_t sqNum, FILE * fp, char data[2048], long int sz){
     
     
     if(sz < 2048){
-        fread(data, sizeof(char), sz, fp);
+        sz = fread(data, sizeof(char), sz, fp);
     }
     
-    else{
-        fread(data, CHUNK_SIZE , 1, fp);
+        else{
+        sz = fread(data, CHUNK_SIZE , 1, fp);
     }
 
 
-    return data;
+    return sz;
 
 
 }

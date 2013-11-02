@@ -44,6 +44,7 @@ uint32_t sqNumb;
 long int sz;
 FILE * fp;
 FILE * fp2;
+long int szread=0;
 int status, SendR,  yes=1, fdmax, newfd, i,q, count = 0, TempR;
 long int sz2 = 0;
 struct addrinfo hints, hints2, *res, *res2;  // will point to the results
@@ -233,15 +234,15 @@ for(;;){
             //SET WRITE FD IF sqNum SQARRAY[i] is less than FILESIZE/CHUNKSIZE for each FD
             
             memset(bt.data, 0, sizeof(bt.data));
-            getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2);
-            memcpy(&str, bt.data, strlen(bt.data));
+            szread = getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz2);
+            memcpy(&str, bt.data, szread);
             md5Start(&md);
             md5Add(&md, str, strlen(str));
             md5End(&md, digest);
             memcpy(&bt.md5, digest, sizeof(digest));
             
             
-            fwrite(bt.data , 1 , strlen(bt.data) , fp2);
+            fwrite(bt.data , 1 , szread , fp2);
             for (q=0;q<16;q++){
                 printf("%02x", bt.md5[q]);
                      }
