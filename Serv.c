@@ -240,7 +240,7 @@ for(;;){
             memcpy(&bt.md5, digest, sizeof(digest));
             
             
-            fwrite(bt.data , 1 , sizeof(bt.data) , fp2);
+            fwrite(bt.data , 1 , strlen(bt.data) , fp2);
             for (q=0;q<16;q++){
                 printf("%02x", bt.md5[q]);
                      }
