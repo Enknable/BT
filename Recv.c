@@ -165,7 +165,7 @@ for(;;){
         sqNumb++;
          //fprintf(fp, "%s", bt.data);
 
-        
+
         //printf("%s", bt.data);
         fwrite(bt.data , 1 , strlen(bt.data) , fp );
       //  data_bytes += numb_bytes - 20;
