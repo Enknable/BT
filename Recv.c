@@ -126,6 +126,7 @@ for(;;){
     }                 
     
 
+
     printf("%i q \n", sqNumb);
     printf("%i z \n", bt.sqNum);
     
