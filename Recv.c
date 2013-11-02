@@ -129,12 +129,12 @@ for(;;){
     printf("%i q \n", sqNumb);
     printf("%i z \n", bt.sqNum);
     
-    if(strncmp (buf1, buf2, 16) != 0){
-            printf("%s\n", buf1);
-            printf("%s\n", buf2);
-         }
+    //if(strncmp (buf1, buf2, 16) != 0){
+      //      printf("%s\n", buf1);
+        //    printf("%s\n", buf2);
+         //}
     
-    if(bt.sqNum != sqNumb){
+    if(bt.sqNum != sqNumb || strncmp (buf1, buf2, 16) != 0){
         printf("dropped packet");
          
         bt.sqNum = sqNumb;
