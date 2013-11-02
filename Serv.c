@@ -43,6 +43,7 @@ int  j=0, numb_bytes = 0;
 uint32_t sqNumb;
 long int sz;
 FILE * fp;
+FILE * fp2;
 int status, SendR,  yes=1, fdmax, newfd, i,q, count = 0, TempR;
 long int sz2 = 0;
 struct addrinfo hints, hints2, *res, *res2;  // will point to the results
@@ -67,6 +68,9 @@ memset(bt.data, 0, sizeof(bt.data));
 fseek(fp, 0L, SEEK_END);
 sz2 = sz = ftell(fp);
 fseek(fp, 0L, SEEK_SET);
+
+fp2 = fopen("newfiletest", "ab");
+fseek(fp2, 0L, SEEK_SET);
 
 
 FD_ZERO(&master);    // clear the master and temp sets
@@ -235,6 +239,8 @@ for(;;){
             md5End(&md, digest);
             memcpy(&bt.md5, digest, sizeof(digest));
             
+            
+            fwrite(bt.data , 1 , strlen(bt.data) , fp2);
             for (q=0;q<16;q++){
                 printf("%02x", bt.md5[q]);
                      }
