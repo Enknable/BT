@@ -119,10 +119,8 @@ for(;;){
     md5End(&md, digest);
     
     for (q=0;q<16;q++){
-                sprintf(buf1, "%02x", bt.md5[i]);
-    buf1.append( buf1 );
-                sprintf(buf2, "%02x", digest[i]);
-    buf2.append( buf2 );
+                sprintf(buf1*2q, "%02x", bt.md5[i]);
+                sprintf(buf2*2q, "%02x", digest[i]);
                      }
     
 
