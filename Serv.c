@@ -56,7 +56,6 @@ int byte_count;
 char ipstr[INET6_ADDRSTRLEN];
 int broadcast = 1;
 //char broadcast = '1'; // if that doesn't work, try this
-setbuf(fp, NULL);
 srand((unsigned) time(&t));
 
 
