@@ -70,6 +70,7 @@ sz2 = sz = ftell(fp);
 fseek(fp, 0L, SEEK_SET);
 
 fp2 = fopen("newfiletest", "ab");
+setbuf(fp2, NULL);
 fseek(fp2, 0L, SEEK_SET);
 
 
