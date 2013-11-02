@@ -114,7 +114,7 @@ for(;;){
     
     memcpy(&str, bt.data, bt.length);
     md5Start(&md);
-    md5Add(&md, str, sizeof(str));
+    md5Add(&md, str, bt.length);
     md5End(&md, digest);
     
     for (q=0;q<16;q++){
