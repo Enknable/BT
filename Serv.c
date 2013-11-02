@@ -199,6 +199,7 @@ for(;;){
                             if(bt.ack == 1){
                                 printf("%i imhere and should be zero\n", bt.WHOAMI);
                             ACK[bt.WHOAMI] = 1;
+                            BeeN=1;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
                             printf("%i WHO?\n", SQARRAY[bt.WHOAMI]);
                             sleep(1);
@@ -214,7 +215,6 @@ for(;;){
                             printf("I'm HERE");
                             ACK[bt.WHOAMI] = bt.ack;
                             //getChunk
-                            BeeN=1;
                             sendto(bt.WHOAMI, &bt, sizeof bt, 0, res2->ai_addr , res2->ai_addrlen);
                             sleep(1);
                             
