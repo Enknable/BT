@@ -120,8 +120,10 @@ for(;;){
     
     for (q=0;q<16;q++){
                 sprintf(buf1+(2*q), "%02x", bt.md5[q]);
-                sprintf(buf2+(2*q), "%02x", digest[q]);
                      }
+    for(q=0;q<16;q++){
+        sprintf(buf2+(2*q), "%02x", digest[q]);
+    }                 
     
 
     printf("%i q \n", sqNumb);
