@@ -120,6 +120,9 @@ for(;;){
     for (q=0;q<16;q++){
                 printf("%02x", bt.md5[q]);
                      }
+                     for (q=0;q<16;q++){
+                printf("%02x", digest[q]);
+                     }
     
 
     printf("%i q \n", sqNumb);
