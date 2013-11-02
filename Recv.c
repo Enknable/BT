@@ -181,6 +181,7 @@ for(;;){
 
         //printf("%s", bt.data);
         fwrite(bt.data , 1 , bt.length , fp );
+        memset(bt.data, 0, sizeof(bt.data));
       //  data_bytes += numb_bytes - 20;
     //if(bt.sz*1000 <= data_bytes)
     //exit(1);
