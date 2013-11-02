@@ -270,7 +270,7 @@ for(;;){
                 printf("%i sqnum\n", bt.sqNum);
                 printf("%i sqnumarray\n", SQARRAY[SDARRAY[i]]);
                 
-
+            bt.length = szread;
             bt.sz=sz;    
             bt.WHOAMI = SDARRAY[i];
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
