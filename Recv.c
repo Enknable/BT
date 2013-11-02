@@ -47,7 +47,7 @@ int main(){
     hints2.ai_socktype = SOCK_DGRAM; // UDP datagram sockets
     hints2.ai_flags = AI_PASSIVE;     // fill in my IP for me
 
-    if ((status = getaddrinfo(NULL, "3490", &hints, &res)) != 0) {
+    if ((status = getaddrinfo("192.168.1.77", "3490", &hints, &res)) != 0) {
         
         fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
         exit(1);
@@ -78,7 +78,7 @@ int main(){
     
     
     //select recvfrom/check seq # of received packets
-    if ((status = getaddrinfo("192.168.1.77", "5000", &hints2, &res2)) != 0) {
+    if ((status = getaddrinfo(NULL, "5000", &hints2, &res2)) != 0) {
     fprintf(stderr, "getaddrinfo error: %s\n", gai_strerror(status));
     exit(1);
 }
