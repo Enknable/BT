@@ -243,7 +243,7 @@ for(;;){
             
             printf("%s\n", bt.data);
             printf("%lu\n", szread);
-            sz2 = fwrite(bt.data , 1 , szread , fp2);
+            fwrite(bt.data , 1 , szread , fp2);
             printf("%lu\n", sz2);
             for (q=0;q<16;q++){
                 printf("%02x", bt.md5[q]);
@@ -254,7 +254,7 @@ for(;;){
             
             
             //!!!!!!!This needs to be set for each socket!
-            sz = sz - szread;
+            sz2 = sz2 - szread;
             printf("%i\n", i);
             //!!!!!!!
             
@@ -290,7 +290,7 @@ for(;;){
                     printf("%i\n", SQARRAY[SDARRAY[i]]);
                     
                     
-                    if(sz == 0);
+                    if(sz2 == 0);
                 FD_CLR(SDARRAY[i], &master);
     }
         
