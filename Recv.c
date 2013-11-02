@@ -129,9 +129,9 @@ for(;;){
     printf("%i q \n", sqNumb);
     printf("%i z \n", bt.sqNum);
     
-    if(buf1 != buf2){
-            // printf("%s\n", buf1);
-            printf("%s\n", buf2[0]);
+    if(strncmp (buf1, buf2, 16) != 0){
+            printf("%s\n", buf1);
+            printf("%s\n", buf2);
          }
     
     if(bt.sqNum != sqNumb){
