@@ -193,7 +193,7 @@ for(;;){
                         
             
             if(bt.sqNum > 0){
-                    FD_CLR(SDARRAY[bt.WHOAMI], &master);
+                    FD_CLR(bt.WHOAMI, &master);
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
                                 printf("%i imhere and should be zero\n", bt.WHOAMI);
