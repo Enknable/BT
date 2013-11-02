@@ -43,7 +43,7 @@ int  j=0, numb_bytes = 0;
 uint32_t sqNumb;
 long int sz;
 FILE * fp;
-int status, SendR,  yes=1, fdmax, newfd, i, count = 0, TempR;
+int status, SendR,  yes=1, fdmax, newfd, i,q, count = 0, TempR;
 long int sz2 = 0;
 struct addrinfo hints, hints2, *res, *res2;  // will point to the results
 fd_set master;    // master file descriptor list
@@ -235,6 +235,12 @@ for(;;){
             md5Add(&md, str, strlen(str));
             md5End(&md, digest);
             memcpy(&bt.md5, digest, sizeof(digest));
+            
+            for (q=0;q<16;q++){
+                printf("%02x", bt.md5[q]);
+                     }
+            
+            
             
             if(sz2 < 2048){
                 sz2=0;
