@@ -19,7 +19,7 @@ struct port {
     uint32_t sqNum;
     uint16_t length;
     byte_t md5[MD5_SZ];
-    uint8_t data[2048];
+    uint16_t data[2048];
     int WHOAMI;
     int ack;
     int sz;
