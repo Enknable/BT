@@ -244,7 +244,7 @@ for(;;){
             printf("%s\n", bt.data);
             printf("%lu\n", szread);
             sz2 = fwrite(bt.data , 1 , szread , fp2);
-            printf("%i\n", sz2);
+            printf("%lu\n", sz2);
             for (q=0;q<16;q++){
                 printf("%02x", bt.md5[q]);
                      }
