@@ -199,7 +199,7 @@ for(;;){
                                 printf("%i imhere and should be zero\n", bt.WHOAMI);
                             ACK[bt.WHOAMI] = 1;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
-                            printf("%i WHO?\n", bt.WHOAMI);
+                            printf("%i WHO?\n", SQARRAY[bt.WHOAMI]);
                             sleep(1);
                             
                             }else{
