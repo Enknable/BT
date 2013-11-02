@@ -238,9 +238,6 @@ for(;;){
             
             memset(bt.data, 0, sizeof(bt.data));
             
-            if(BeeN == 1){
-                SQARRAY[SDARRAY[i]]--;
-            } 
             szread = getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz);
             
             memcpy(&str, bt.data, szread);
@@ -283,8 +280,6 @@ for(;;){
             bt.sz=sz;    
             bt.WHOAMI = SDARRAY[i];
             byte_count = sendto(SDARRAY[i], &bt, sizeof bt, 0, remoteaddrudp[i], addrlenudp[i]);
-            if(BeeN == 1)
-            BeeN=0;
             numb_bytes += byte_count - 20;
                 inet_ntop(remoteaddr.ss_family,
                         get_in_addr(remoteaddrudp[i]),
