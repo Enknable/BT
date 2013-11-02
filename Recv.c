@@ -144,10 +144,10 @@ for(;;){
         bt.ack=0;
          if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
              res->ai_addr, res->ai_addrlen)) == -1) {
-            sleep(5);
         perror("talker: sendto");
         exit(1);
     }
+    sleep(1);
     for(;;){
         numb_bytes=0;
  recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
@@ -157,10 +157,11 @@ for(;;){
              res->ai_addr, res->ai_addrlen)) == -1) {
         perror("talker: sendto");
         exit(1);
-        sleep(10);
+
     }
         printf("nope");
     continue;
+    sleep(5);
     }else{
         bt.ack = 1;
         bt.sqNum = sqNumb;
