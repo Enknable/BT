@@ -149,7 +149,7 @@ for(;;){
     }
     for(;;){
         recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr*) &remoteaddr, &addrlen);
-        if(bt.sqNum != sqNum)
+        if(bt.sqNum != sqNumb)
         continue;
     }
     for(;;){
