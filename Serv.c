@@ -260,10 +260,10 @@ for(;;){
             
             //printf("%i\n", remoteaddrudp[count-1]);
         
-            //j=(rand()%100);
-            //printf("%i\n", j);
-              //  if(j == 1)
-                //SQARRAY[SDARRAY[i]]++;
+            j=(rand()%100);
+            printf("%i\n", j);
+                if(j == 1)
+                SQARRAY[SDARRAY[i]]++;
                 
                 bt.sqNum = SQARRAY[SDARRAY[i]];
                 
