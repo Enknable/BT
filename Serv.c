@@ -254,7 +254,7 @@ for(;;){
             
             
             //!!!!!!!This needs to be set for each socket!
-            sz = sz - szread
+            sz = sz - szread;
             printf("%i\n", i);
             //!!!!!!!
             
