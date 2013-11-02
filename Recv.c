@@ -150,7 +150,7 @@ for(;;){
     for(;;){
         recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr*) &remoteaddr, &addrlen);
         if(bt.sqNum != sqNumb)
-        continue;
+        break;
     }
     for(;;){
         numb_bytes=0;
