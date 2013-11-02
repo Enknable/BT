@@ -128,7 +128,7 @@ for(;;){
     printf("%i q \n", sqNumb);
     printf("%i z \n", bt.sqNum);
     
-    if(bt.sqNum != sqNumb && bt.md5 != digest){
+    if(bt.sqNum != sqNumb || bt.md5 != digest){
         printf("dropped packet");
         bt.sqNum = sqNumb;
         bt.ack=0;
