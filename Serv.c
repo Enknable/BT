@@ -199,6 +199,7 @@ for(;;){
                                 printf("%i imhere and should be zero\n", bt.WHOAMI);
                             ACK[bt.WHOAMI] = 1;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
+                            printf("%i WHO?\n", bt.WHOAMI);
                             sleep(1);
                             
                             }else{
@@ -266,6 +267,7 @@ for(;;){
                 SQARRAY[SDARRAY[i]]++;
                 
                 bt.sqNum = SQARRAY[SDARRAY[i]];
+                printf("%i IAM\n", SQARRAY[SDARRAY[i]]);
                 
                 printf("%i sqnum\n", bt.sqNum);
                 printf("%i sqnumarray\n", SQARRAY[SDARRAY[i]]);
@@ -291,7 +293,7 @@ for(;;){
                     
                     
                     if(sz2 == 0);
-                FD_CLR(SDARRAY[i], &master);
+                FD_CLR(SDARRAY[i], &master); //ZERO THIS TO OPEN FOR REPEATS...
     }
         
         
