@@ -129,7 +129,7 @@ for(;;){
     
     if(buf1 != buf2){
             // printf("%s\n", buf1);
-            printf("%s\n", buf2);
+            printf("%s\n", buf2[0]);
          }
     
     if(bt.sqNum != sqNumb){
