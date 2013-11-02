@@ -127,12 +127,14 @@ for(;;){
     printf("%i q \n", sqNumb);
     printf("%i z \n", bt.sqNum);
     
-    if(bt.sqNum != sqNumb){
-        printf("dropped packet");
-         if(buf1 != buf2){
+    if(buf1 != buf2){
              printf("%s\n", buf1);
             printf("%s\n", buf2);
          }
+    
+    if(bt.sqNum != sqNumb){
+        printf("dropped packet");
+         
         bt.sqNum = sqNumb;
         bt.ack=0;
          if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
