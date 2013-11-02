@@ -112,9 +112,9 @@ for(;;){
 
     numb_bytes += recvfrom(SendR, &bt, sizeof bt, 0,(struct sockaddr *) &remoteaddr, &addrlen);
     
-    memcpy(&str, bt.data, bt.length-1);
+    memcpy(&str, bt.data, bt.length);
     md5Start(&md);
-    md5Add(&md, str, bt.length-1);
+    md5Add(&md, str, sizeof(str));
     md5End(&md, digest);
     
     for (q=0;q<16;q++){
