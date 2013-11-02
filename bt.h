@@ -20,9 +20,9 @@ struct port {
     uint16_t length;
     byte_t md5[MD5_SZ];
     byte_t data[2048];
-    int WHOAMI;
-    int ack;
-    int sz;
+    uint8_t WHOAMI;
+    uint8_t ack;
+    uint8_t sz;
     
 } __attribute__ ((__packed__)) ;
     
