@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 #include <sys/time.h>
 #include <unistd.h>
 #include <sys/types.h>

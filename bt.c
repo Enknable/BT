@@ -5,6 +5,8 @@
 #include <string.h>
 #include <inttypes.h>
 #include <stdint.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include <string.h>
 #include "common.h"
 #include "bt.h"
