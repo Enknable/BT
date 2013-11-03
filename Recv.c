@@ -164,6 +164,9 @@ for(;;){
         printf("nope");
     continue;
     }else{
+        memset(bt.data, 0, sizeof(bt.data));
+        bt.sqNum=0;
+        memset(bt.md5, 0, sizeof(bt.md5));
         bt.ack = 1;
         bt.sqNum = sqNumb;
         if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
