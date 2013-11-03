@@ -201,7 +201,7 @@ for(;;){
                             ACK[bt.WHOAMI] = 1;
                             BeeN=1;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;
-                            getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz);
+                            getChunk(SQARRAY[bt.WHOAMI, fp, bt.data, sz);
                             printf("%i WHO?\n", SQARRAY[bt.WHOAMI]);
                    
                             
