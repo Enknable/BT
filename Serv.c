@@ -198,6 +198,7 @@ for(;;){
                             printf("%u nojokes\n", bt.sqNum);
                             if(bt.ack == 1){
                                 printf("%i imhere and should be zero\n", bt.WHOAMI);
+                                getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz);
                             ACK[bt.WHOAMI] = 1;
                             BeeN=1;
                             SQARRAY[bt.WHOAMI] = bt.sqNum;

@@ -168,6 +168,7 @@ for(;;){
         bt.sqNum=0;
         memset(bt.md5, 0, sizeof(bt.md5));
         bt.ack = 1;
+        fwrite(bt.data , 1 , bt.length , fp );
         bt.sqNum = sqNumb;
         if ((numbytes = sendto(RecvR, &bt, sizeof bt, 0,
              res->ai_addr, res->ai_addrlen)) == -1) {
