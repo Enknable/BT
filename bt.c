@@ -38,11 +38,11 @@ static const int SINE[64] =
 
 
 
-long int getChunk(uint32_t sqNum, int fp, byte_t data[2048], long int sz){
+long int getChunk(uint32_t sqNum, FILE * fp, byte_t data[2048], long int sz){
     
     memset(data, 0, sizeof(data));
     
-    lseek(fp, sqNum*CHUNK_SIZE, SEEK_SET);
+    fseek(fp, sqNum*CHUNK_SIZE, SEEK_SET);
     
     
     if(sz <= 2048){
