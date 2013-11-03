@@ -240,6 +240,7 @@ for(;;){
             
             memset(bt.data, 0, sizeof(bt.data));
             
+            lseek(fp, SQARRAY[SDARRATY[i]]*CHUNK_SIZE, SEEK_SET);
             printf("%i sqNum\n", SQARRAY[SDARRAY[i]]);
             szread = getChunk(SQARRAY[SDARRAY[i]], fp, bt.data, sz);
             
