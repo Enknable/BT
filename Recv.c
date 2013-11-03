@@ -32,6 +32,7 @@ int main(){
     int broadcast = 1;
 	//char broadcast = '1'; // if that doesn't work, try this
     
+
     
     fp = fopen("newfile.txt", "ab");
     setbuf(fp, NULL);
