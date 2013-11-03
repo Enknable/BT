@@ -137,7 +137,7 @@ for(;;){
     
     if(bt.sqNum != sqNumb || strncmp (buf1, buf2, 16) != 0){
         memset(bt.data, 0, sizeof(bt.data));
-        memset(bt.sqNum, 0, sizeof(bt.sqNum));
+        bt.sqNum=0;
         memset(bt.md5, 0, sizeof(bt.md5));
         
         printf("dropped packet");
