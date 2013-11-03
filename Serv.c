@@ -131,6 +131,7 @@ for(;;){
         perror("select");
         exit(4);
     }
+    
 
     // run through the existing connections looking for data to read
     for(i = 0; i <= fdmax; i++) {

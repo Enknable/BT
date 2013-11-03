@@ -162,6 +162,7 @@ for(;;){
 
     }
         printf("nope");
+        
     continue;
     }else{
         memset(bt.data, 0, sizeof(bt.data));

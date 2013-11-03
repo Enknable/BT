@@ -30,6 +30,7 @@ struct port {
 
 long int getChunk(uint32_t sqNum, FILE * fp, byte_t data[2048], long int sz);
 
+
 /*
  * Copyright (c) 2011 Ryan Vogt <vogt@cs.ualberta.ca>
  *
